@@ -1,0 +1,48 @@
+name: Build and Deploy to GHPages and NPM
+
+on:
+  push:
+    branches:
+      - develop
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "20"
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Update project Version with Timestamp
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          TIMESTAMP=$(date +%Y%m%d%H%M%S)
+          NEW_VERSION="${VERSION}-${TIMESTAMP}"
+          echo "New version: $NEW_VERSION"
+          sed -i "s/\"version\": \"$VERSION\"/\"version\": \"$NEW_VERSION\"/" ./package.json
+
+      - name: Build Project
+        run: npm run build
+
+      - name: Build Storybook
+        run: npm run build:storybook
+
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages
+          folder: storybook-static
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Publish restio-ui
+        run: npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
