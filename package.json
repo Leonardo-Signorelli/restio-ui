@@ -1,8 +1,22 @@
 {
   "name": "restio-ui",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.0.1",
+  "description": "React UI components library",
   "type": "module",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leonardo-signorelli/restio-ui.git"
+  },
+  "homepage": "https://restio.github.io/restio-ui/",
+  "main": "./dist/restio-ui.cjs.js",
+  "module": "./dist/restio-ui.es.js",
+  "types": "./dist/index.d.ts",
+  "style": "./dist/restio-ui.css",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "dev": "storybook dev -p 6006",
     "clean": "rimraf storybook-static && rimraf dist && rimraf node_modules",
