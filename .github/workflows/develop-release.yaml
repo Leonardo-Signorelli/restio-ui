@@ -40,7 +40,7 @@ jobs:
         with:
           branch: gh-pages
           folder: storybook-static
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.GH_TOKEN }}
 
       - name: Publish restio-ui
         run: npm publish --access public
