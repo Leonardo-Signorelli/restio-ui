@@ -1,6 +1,5 @@
-import React from "react";
-import { Meta, StoryObj } from "@storybook/react";
-import { Button, ButtonProps } from "./Button";
+import { Button, ButtonProps } from "./button";
+import { Meta, StoryObj } from "@storybook/react-vite";
 
 const meta: Meta<ButtonProps> = {
   title: "Components/Button",
