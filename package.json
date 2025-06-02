@@ -28,6 +28,7 @@
     "build:storybook": "rimraf storybook-static && storybook build"
   },
   "dependencies": {
+    "eslint-plugin-react": "^7.37.5",
     "react": "^19.1.0",
     "react-dom": "^19.1.0"
   },
