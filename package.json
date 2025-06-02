@@ -30,7 +30,8 @@
   "dependencies": {
     "eslint-plugin-react": "^7.37.5",
     "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+    "react-dom": "^19.1.0",
+    "vite-plugin-dts": "^4.5.4"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^4.0.0",
