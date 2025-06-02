@@ -1,7 +1,7 @@
 {
   "name": "restio-ui",
   "private": true,
-  "version": "0.0.1",
+  "version": "0.0.1-SNAPSHOT",
   "description": "React UI components library",
   "type": "module",
   "license": "Apache-2.0",
