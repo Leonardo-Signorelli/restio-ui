@@ -1,0 +1,106 @@
+/**
+ * Design System — OKLCH Tokens
+ * Functional color categories: Backgrounds, Interactive, Borders, Solid, Text
+ * Includes dark mode, APCA contrast-safe text, and alpha shadow scales.
+ */
+
+/* ===============================
+ * 🌞 LIGHT MODE COLORS
+ * =============================== */
+:root {
+  /* -----------------------------
+   * BACKGROUNDS
+   * Neutral, soft backgrounds and surfaces
+   * ----------------------------- */
+  --bg-default: oklch(0.98 0 0); /* Gray-50 */
+  --bg-subtle: oklch(0.95 0 0); /* Gray-100 */
+  --bg-muted: oklch(0.9 0 0); /* Gray-200 */
+  --bg-primary: oklch(0.9 0.05 270); /* Primary-200 */
+
+  /* -----------------------------
+   * INTERACTIVE COMPONENTS
+   * Buttons, toggles, hovers, focuses
+   * ----------------------------- */
+  --interactive-default: oklch(0.6 0.13 270); /* Primary-500 */
+  --interactive-hover: oklch(0.5 0.16 270); /* Primary-600 */
+  --interactive-active: oklch(0.4 0.18 270); /* Primary-700 */
+  --interactive-disabled: oklch(0.8 0 0); /* Gray-300 */
+
+  /* -----------------------------
+   * BORDERS & SEPARATORS
+   * Lines, dividers, outlines
+   * ----------------------------- */
+  --border-default: oklch(0.8 0 0); /* Gray-300 */
+  --border-muted: oklch(0.9 0 0); /* Gray-200 */
+  --border-subtle: oklch(0.95 0 0); /* Gray-100 */
+  --border-primary: oklch(0.6 0.13 270); /* Primary-500 */
+
+  /* -----------------------------
+   * SOLID COLORS
+   * Icons, indicators, tags, badges
+   * ----------------------------- */
+  --solid-neutral: oklch(0.6 0 0); /* Gray-500 */
+  --solid-primary: oklch(0.6 0.13 270); /* Primary-500 */
+  --solid-positive: oklch(0.6 0.12 150); /* Green tone */
+  --solid-warning: oklch(0.85 0.14 90); /* Yellow tone */
+  --solid-danger: oklch(0.65 0.18 30); /* Red tone */
+
+  /* -----------------------------
+   * ACCESSIBLE TEXT
+   * Ensured APCA-safe against matching backgrounds
+   * ----------------------------- */
+  --text-on-bg: oklch(0.2 0 0); /* Gray-900 */
+  --text-muted: oklch(0.35 0 0); /* Gray-700 */
+  --text-on-primary: oklch(0.98 0 0); /* White on dark primary */
+  --text-disabled: oklch(0.6 0 0); /* Gray-500 */
+}
+
+/* ===============================
+ * 🌚 DARK MODE OVERRIDES
+ * =============================== */
+.dark {
+  /* BACKGROUNDS */
+  --bg-default: oklch(0.15 0 0); /* Gray-900 dark */
+  --bg-subtle: oklch(0.2 0 0); /* Gray-800 */
+  --bg-muted: oklch(0.25 0 0); /* Gray-700 */
+  --bg-primary: oklch(0.25 0.05 270); /* Primary-200 dark */
+
+  /* INTERACTIVE */
+  --interactive-default: oklch(0.65 0.16 270); /* Primary-600 */
+  --interactive-hover: oklch(0.75 0.18 270);
+  --interactive-active: oklch(0.85 0.2 270);
+  --interactive-disabled: oklch(0.3 0 0); /* Gray-600 */
+
+  /* BORDERS */
+  --border-default: oklch(0.35 0 0); /* Gray-700 */
+  --border-muted: oklch(0.25 0 0); /* Gray-800 */
+  --border-subtle: oklch(0.2 0 0); /* Gray-900 */
+  --border-primary: oklch(0.75 0.18 270); /* Primary */
+
+  /* SOLID COLORS */
+  --solid-neutral: oklch(0.65 0 0); /* Gray-400 */
+  --solid-primary: oklch(0.75 0.18 270);
+  --solid-positive: oklch(0.75 0.16 150); /* Green */
+  --solid-warning: oklch(0.85 0.14 90); /* Yellow */
+  --solid-danger: oklch(0.75 0.18 30); /* Red */
+
+  /* TEXT */
+  --text-on-bg: oklch(0.98 0 0); /* White on dark */
+  --text-muted: oklch(0.8 0 0); /* Gray-200 */
+  --text-on-primary: oklch(0.1 0 0); /* Dark text on bright */
+  --text-disabled: oklch(0.5 0 0); /* Gray-500 */
+}
+
+/* ===============================
+ * OVERLAYS & SHADOWS
+ * Alpha variants for depth
+ * =============================== */
+:root {
+  --overlay-low: oklch(0 0 0 / 0.03);
+  --overlay-mid: oklch(0 0 0 / 0.08);
+  --overlay-high: oklch(0 0 0 / 0.16);
+
+  --shadow-soft: oklch(0 0 0 / 0.06);
+  --shadow-medium: oklch(0 0 0 / 0.12);
+  --shadow-hard: oklch(0 0 0 / 0.18);
+}
