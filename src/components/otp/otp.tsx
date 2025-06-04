@@ -1,125 +1,173 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, {
+  useState,
+  useRef,
+  useEffect,
+  KeyboardEvent,
+  ClipboardEvent,
+} from "react";
 import "./otp.css";
-import { OtpInputProps } from "./otp-types";
-import { focusInput, processPastedValue } from "./otp-utils";
+import { OTPProps } from "./otp-types";
 
-/**
- * OTP Input component for entering one-time passwords or PIN codes.
- * Accessible and keyboard-friendly.
- */
-export const OtpInput: React.FC<OtpInputProps> = ({
+export const OTPComponent: React.FC<OTPProps> = ({
   length = 6,
   onChange,
-  autoFocus = true,
+  onComplete,
+  ariaLabel = "One-time password input",
+  className = "",
 }) => {
-  const [values, setValues] = useState<string[]>(Array(length).fill(""));
-  const inputsRef = useRef<Array<HTMLInputElement | null>>([]);
+  const [otp, setOtp] = useState<string[]>(Array(length).fill(""));
+  const inputRefs = useRef<HTMLInputElement[]>([]);
 
-  /**
-   * Handles value change of a single input.
-   */
-  const handleChange = (val: string, index: number) => {
-    const cleanVal = val.replace(/\D/g, "").charAt(0);
-    if (!cleanVal) return;
+  const focusInput = (index: number) => {
+    inputRefs.current[index]?.focus();
+    inputRefs.current[index]?.select();
+  };
 
-    const newValues = [...values];
-    newValues[index] = cleanVal;
-    setValues(newValues);
-    onChange?.(newValues.join(""));
+  const handleInput = (e: React.FormEvent<HTMLInputElement>, index: number) => {
+    const value = e.currentTarget.value;
 
-    // 👇 Vai avanti anche se il valore è identico
-    const nextIndex = Math.min(index + 1, length - 1);
-    if (index !== length - 1) {
-      focusInput(inputsRef.current, nextIndex);
+    if (!/^\d*$/.test(value)) return;
+
+    // Forza l'aggiornamento anche se il valore è lo stesso
+    const newOtp = [...otp];
+    newOtp[index] = value;
+    setOtp(newOtp);
+
+    const otpValue = newOtp.join("");
+    onChange?.(otpValue);
+
+    if (value && index < length - 1) {
+      focusInput(index + 1);
+    }
+
+    if (otpValue.length === length) {
+      onComplete?.(otpValue);
     }
   };
 
-  /**
-   * Handles keyboard navigation and deletion.
-   */
-  const handleKeyDown = (
-    e: React.KeyboardEvent<HTMLInputElement>,
-    index: number
-  ) => {
-    const key = e.key;
+  const handleChange = (value: string, index: number) => {
+    console.log(value);
+    if (!/^\d*$/.test(value)) return;
 
-    if (key === "Backspace") {
-      e.preventDefault();
-      if (values[index]) {
-        const newValues = [...values];
-        newValues[index] = "";
-        setValues(newValues);
-        onChange?.(newValues.join(""));
-      } else if (index > 0) {
-        focusInput(inputsRef.current, index - 1);
+    // Se il valore è uguale a quello già presente ma non vuoto,
+    // forziamo lo spostamento al campo successivo
+    if (value === otp[index] && value !== "") {
+      if (index < length - 1) {
+        focusInput(index + 1);
       }
+      return;
     }
 
-    if (key === "ArrowLeft" && index > 0) {
-      e.preventDefault();
-      focusInput(inputsRef.current, index - 1);
+    const newOtp = [...otp];
+    newOtp[index] = value;
+    setOtp(newOtp);
+
+    const otpValue = newOtp.join("");
+    onChange?.(otpValue);
+
+    // Move to next field when a digit is entered
+    if (value && index < length - 1) {
+      focusInput(index + 1);
     }
 
-    if (key === "ArrowRight" && index < length - 1) {
-      e.preventDefault();
-      focusInput(inputsRef.current, index + 1);
-    }
-  };
-
-  /**
-   * Handles input focus and ensures content selection.
-   */
-  const handleFocus = (index: number) => {
-    const input = inputsRef.current[index];
-    if (input) {
-      setTimeout(() => {
-        input.select();
-      }, 0);
+    if (otpValue.length === length) {
+      onComplete?.(otpValue);
     }
   };
 
-  /**
-   * Handles pasting a full OTP into the inputs.
-   */
-  const handlePaste = (e: React.ClipboardEvent<HTMLInputElement>) => {
+  const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>, index: number) => {
+    // Prevent cursor movement when arrow keys are pressed
+    if (["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown"].includes(e.key)) {
+      e.preventDefault();
+    }
+
+    if (e.key === "Backspace") {
+      if (!otp[index] && index > 0) {
+        // Move to previous input on backspace if current is empty
+        focusInput(index - 1);
+      } else if (otp[index]) {
+        // Clear current input but stay there
+        const newOtp = [...otp];
+        newOtp[index] = "";
+        setOtp(newOtp);
+        onChange?.(newOtp.join(""));
+      }
+    } else if (e.key === "ArrowLeft" && index > 0) {
+      // Move left
+      focusInput(index - 1);
+    } else if (e.key === "ArrowRight" && index < length - 1) {
+      // Move right
+      focusInput(index + 1);
+    } else if (e.key === "Delete" && index < length - 1) {
+      // Move to next input on delete
+      focusInput(index + 1);
+    }
+  };
+
+  const handlePaste = (e: ClipboardEvent<HTMLInputElement>) => {
     e.preventDefault();
-    const pasted = e.clipboardData.getData("Text");
-    const newValues = processPastedValue(pasted, length);
-    setValues(newValues);
-    onChange?.(newValues.join(""));
+    const pasteData = e.clipboardData.getData("text/plain").replace(/\D/g, "");
+    if (!pasteData) return;
 
-    const nextIndex = Math.min(pasted.length, length - 1);
-    focusInput(inputsRef.current, nextIndex);
+    const newOtp = [...otp];
+    let pasteIndex = 0;
+
+    for (let i = 0; i < length && pasteIndex < pasteData.length; i++) {
+      newOtp[i] = pasteData[pasteIndex];
+      pasteIndex++;
+    }
+
+    setOtp(newOtp);
+    const otpValue = newOtp.join("");
+    onChange?.(otpValue);
+
+    if (otpValue.length === length) {
+      onComplete?.(otpValue);
+    }
+
+    // Focus the last filled input
+    const lastFilledIndex = Math.min(pasteData.length - 1, length - 1);
+    focusInput(lastFilledIndex);
   };
 
-  /**
-   * Auto-focus on first input if enabled.
-   */
+  const handleFocus = (index: number) => {
+    inputRefs.current[index]?.select();
+  };
+
   useEffect(() => {
-    if (autoFocus) {
-      focusInput(inputsRef.current, 0);
+    focusInput(0);
+  }, []);
+
+  useEffect(() => {
+    const filledIndex = otp.findIndex((value) => value === "");
+    if (filledIndex !== -1 && filledIndex !== 0) {
+      focusInput(filledIndex);
     }
-  }, [autoFocus]);
+  }, [otp]);
 
   return (
-    <div className="otp-container" role="group" aria-label="Enter OTP code">
-      {Array.from({ length }).map((_, i) => (
+    <div
+      className={`otp-container ${className}`}
+      aria-label={ariaLabel}
+      role="group"
+    >
+      {otp.map((value, index) => (
         <input
-          key={i}
-          ref={(el) => {
-            inputsRef.current[i] = el;
-          }}
+          key={index}
+          ref={(el) => (inputRefs.current[index] = el as HTMLInputElement)}
           type="text"
           inputMode="numeric"
-          autoComplete="one-time-code"
-          aria-label={`Digit ${i + 1}`}
-          className="otp-input"
+          pattern="[0-9]*"
           maxLength={1}
-          value={values[i]}
-          onChange={(e) => handleChange(e.target.value, i)}
-          onKeyDown={(e) => handleKeyDown(e, i)}
+          value={value}
+          onChange={(e) => handleChange(e.target.value, index)}
+          onInput={(e) => handleInput(e, index)}
+          onKeyDown={(e) => handleKeyDown(e, index)}
           onPaste={handlePaste}
-          onFocus={() => handleFocus(i)}
+          onFocus={() => handleFocus(index)}
+          className="otp-input"
+          aria-label={`Digit ${index + 1} of ${length}`}
+          autoComplete="one-time-code"
         />
       ))}
     </div>
