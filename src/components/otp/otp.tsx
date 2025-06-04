@@ -16,7 +16,9 @@ export const OTPComponent: React.FC<OTPProps> = ({
   className = "",
 }) => {
   const [otp, setOtp] = useState<string[]>(Array(length).fill(""));
+  console.log(otp);
   const inputRefs = useRef<HTMLInputElement[]>([]);
+  console.log(inputRefs);
 
   const focusInput = (index: number) => {
     inputRefs.current[index]?.focus();
@@ -36,36 +38,6 @@ export const OTPComponent: React.FC<OTPProps> = ({
     const otpValue = newOtp.join("");
     onChange?.(otpValue);
 
-    if (value && index < length - 1) {
-      focusInput(index + 1);
-    }
-
-    if (otpValue.length === length) {
-      onComplete?.(otpValue);
-    }
-  };
-
-  const handleChange = (value: string, index: number) => {
-    console.log(value);
-    if (!/^\d*$/.test(value)) return;
-
-    // Se il valore è uguale a quello già presente ma non vuoto,
-    // forziamo lo spostamento al campo successivo
-    if (value === otp[index] && value !== "") {
-      if (index < length - 1) {
-        focusInput(index + 1);
-      }
-      return;
-    }
-
-    const newOtp = [...otp];
-    newOtp[index] = value;
-    setOtp(newOtp);
-
-    const otpValue = newOtp.join("");
-    onChange?.(otpValue);
-
-    // Move to next field when a digit is entered
     if (value && index < length - 1) {
       focusInput(index + 1);
     }
@@ -160,7 +132,6 @@ export const OTPComponent: React.FC<OTPProps> = ({
           pattern="[0-9]*"
           maxLength={1}
           value={value}
-          onChange={(e) => handleChange(e.target.value, index)}
           onInput={(e) => handleInput(e, index)}
           onKeyDown={(e) => handleKeyDown(e, index)}
           onPaste={handlePaste}
