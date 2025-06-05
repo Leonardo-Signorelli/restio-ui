@@ -15,14 +15,14 @@ export const OTPComponent: React.FC<OTPProps> = ({
   ariaLabel = "One-time password input",
   className = "",
 }) => {
-  const [otp, setOtp] = useState<string[]>(Array(length).fill(""));
-  console.log(otp);
+  const [otp, setOtp] = useState<string>("");
   const inputRefs = useRef<HTMLInputElement[]>([]);
-  console.log(inputRefs);
 
   const focusInput = (index: number) => {
-    inputRefs.current[index]?.focus();
-    inputRefs.current[index]?.select();
+    if (index >= 0 && index < length) {
+      inputRefs.current[index]?.focus();
+      inputRefs.current[index]?.select();
+    }
   };
 
   const handleInput = (e: React.FormEvent<HTMLInputElement>, index: number) => {
@@ -30,48 +30,46 @@ export const OTPComponent: React.FC<OTPProps> = ({
 
     if (!/^\d*$/.test(value)) return;
 
-    // Forza l'aggiornamento anche se il valore è lo stesso
-    const newOtp = [...otp];
-    newOtp[index] = value;
+    let newOtp = otp;
+    if (index >= newOtp.length) {
+      newOtp = newOtp.padEnd(index, "");
+    }
+    newOtp = newOtp.substring(0, index) + value + newOtp.substring(index + 1);
+    newOtp = newOtp.substring(0, length);
+
     setOtp(newOtp);
+    onChange?.(newOtp);
 
-    const otpValue = newOtp.join("");
-    onChange?.(otpValue);
-
+    // Sposta il focus solo se non siamo all'ultimo campo
     if (value && index < length - 1) {
       focusInput(index + 1);
     }
 
-    if (otpValue.length === length) {
-      onComplete?.(otpValue);
+    if (newOtp.length === length) {
+      onComplete?.(newOtp);
     }
   };
 
   const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>, index: number) => {
-    // Prevent cursor movement when arrow keys are pressed
     if (["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown"].includes(e.key)) {
       e.preventDefault();
+
+      if (e.key === "ArrowLeft" && index > 0) {
+        focusInput(index - 1);
+      } else if (e.key === "ArrowRight" && index < length - 1) {
+        focusInput(index + 1);
+      }
     }
 
     if (e.key === "Backspace") {
       if (!otp[index] && index > 0) {
-        // Move to previous input on backspace if current is empty
         focusInput(index - 1);
       } else if (otp[index]) {
-        // Clear current input but stay there
-        const newOtp = [...otp];
-        newOtp[index] = "";
+        const newOtp = otp.substring(0, index) + otp.substring(index + 1);
         setOtp(newOtp);
-        onChange?.(newOtp.join(""));
+        onChange?.(newOtp);
       }
-    } else if (e.key === "ArrowLeft" && index > 0) {
-      // Move left
-      focusInput(index - 1);
-    } else if (e.key === "ArrowRight" && index < length - 1) {
-      // Move right
-      focusInput(index + 1);
     } else if (e.key === "Delete" && index < length - 1) {
-      // Move to next input on delete
       focusInput(index + 1);
     }
   };
@@ -81,24 +79,15 @@ export const OTPComponent: React.FC<OTPProps> = ({
     const pasteData = e.clipboardData.getData("text/plain").replace(/\D/g, "");
     if (!pasteData) return;
 
-    const newOtp = [...otp];
-    let pasteIndex = 0;
-
-    for (let i = 0; i < length && pasteIndex < pasteData.length; i++) {
-      newOtp[i] = pasteData[pasteIndex];
-      pasteIndex++;
-    }
-
+    const newOtp = pasteData.substring(0, length);
     setOtp(newOtp);
-    const otpValue = newOtp.join("");
-    onChange?.(otpValue);
+    onChange?.(newOtp);
 
-    if (otpValue.length === length) {
-      onComplete?.(otpValue);
+    if (newOtp.length === length) {
+      onComplete?.(newOtp);
     }
 
-    // Focus the last filled input
-    const lastFilledIndex = Math.min(pasteData.length - 1, length - 1);
+    const lastFilledIndex = Math.min(pasteData.length, length) - 1;
     focusInput(lastFilledIndex);
   };
 
@@ -106,14 +95,11 @@ export const OTPComponent: React.FC<OTPProps> = ({
     inputRefs.current[index]?.select();
   };
 
+  // Focus management
   useEffect(() => {
-    focusInput(0);
-  }, []);
-
-  useEffect(() => {
-    const filledIndex = otp.findIndex((value) => value === "");
-    if (filledIndex !== -1 && filledIndex !== 0) {
-      focusInput(filledIndex);
+    // Solo quando l'OTP è vuoto o non completo
+    if (otp.length < length) {
+      focusInput(Math.min(otp.length, length - 1));
     }
   }, [otp]);
 
@@ -123,7 +109,7 @@ export const OTPComponent: React.FC<OTPProps> = ({
       aria-label={ariaLabel}
       role="group"
     >
-      {otp.map((value, index) => (
+      {Array.from({ length }).map((_, index) => (
         <input
           key={index}
           ref={(el) => (inputRefs.current[index] = el as HTMLInputElement)}
@@ -131,7 +117,7 @@ export const OTPComponent: React.FC<OTPProps> = ({
           inputMode="numeric"
           pattern="[0-9]*"
           maxLength={1}
-          value={value}
+          value={otp[index] || ""}
           onInput={(e) => handleInput(e, index)}
           onKeyDown={(e) => handleKeyDown(e, index)}
           onPaste={handlePaste}
