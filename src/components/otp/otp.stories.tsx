@@ -1,68 +1,103 @@
-import React, { useState } from "react";
+import React from "react";
 import { Meta, StoryObj } from "@storybook/react-vite";
-import { OtpInput } from "./otp";
+import { OTPComponent as OTP } from "./otp";
+import { OTPProps } from "./otp-types";
 
-const meta: Meta<typeof OtpInput> = {
-  title: "Components/OtpInput",
-  component: OtpInput,
+/**
+ * Meta information for the stories
+ */
+const meta: Meta<typeof OTP> = {
+  title: "Components/OTP",
+  component: OTP,
   tags: ["autodocs"],
-  args: {
-    length: 6,
-    autoFocus: true,
+  argTypes: {
+    length: {
+      control: { type: "number", min: 4, max: 8, step: 1 },
+      description: "Number of OTP digits",
+    },
+    onChange: {
+      action: "changed",
+      description: "Callback when OTP value changes",
+    },
+    onComplete: {
+      action: "completed",
+      description: "Callback when OTP is fully entered",
+    },
+    ariaLabel: {
+      control: "text",
+      description: "ARIA label for accessibility",
+    },
+    className: {
+      control: "text",
+      description: "Additional CSS class",
+    },
+  },
+  parameters: {
+    layout: "centered",
+    docs: {
+      description: {
+        component: `
+A customizable One-Time Password (OTP) input component with:
+- Numeric-only input
+- Paste support
+- Keyboard navigation
+- WCAG/WAI-ARIA compliance
+- Value modification and overwrite
+- Configurable length
+        `,
+      },
+    },
   },
 };
 
 export default meta;
-type Story = StoryObj<typeof OtpInput>;
 
 /**
- * Default story: OTP input with 6 fields, with a simple display of the current value.
+ * Base template for stories
  */
-export const Default: Story = {
-  render: (args) => {
-    const [value, setValue] = useState("");
-    return (
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          gap: "1rem",
-          alignItems: "center",
-        }}
-      >
-        <OtpInput {...args} onChange={setValue} />
-        <p aria-live="polite">
-          Current OTP value: <strong>{value}</strong>
-        </p>
-      </div>
-    );
+const Template: StoryObj<OTPProps> = {
+  render: (args) => <OTP {...args} />,
+};
+
+/**
+ * Default OTP with 6 digits
+ */
+export const Default = {
+  ...Template,
+  args: {
+    length: 6,
   },
 };
 
 /**
- * 4-digit OTP story for short PINs.
+ * OTP with 4 digits
  */
-export const FourDigits: Story = {
+export const FourDigits = {
+  ...Template,
   args: {
     length: 4,
-    autoFocus: false,
   },
-  render: (args) => {
-    const [value, setValue] = useState("");
-    return (
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          gap: "1rem",
-          alignItems: "center",
-        }}
-      >
-        <OtpInput {...args} onChange={setValue} />
-        <p aria-live="polite">
-          PIN: <strong>{value}</strong>
-        </p>
-      </div>
-    );
+  name: "4-Digit OTP",
+};
+
+/**
+ * OTP with 8 digits
+ */
+export const EightDigits = {
+  ...Template,
+  args: {
+    length: 8,
   },
+  name: "8-Digit OTP",
+};
+
+/**
+ * OTP with custom ARIA label
+ */
+export const WithCustomAriaLabel = {
+  ...Template,
+  args: {
+    ariaLabel: "Please enter your verification code",
+  },
+  name: "With Custom ARIA Label",
 };
