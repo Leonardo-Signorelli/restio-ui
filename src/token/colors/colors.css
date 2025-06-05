@@ -1,0 +1,85 @@
+/**
+ * Design System — OKLCH Tokens
+ * Functional color categories: Backgrounds, Interactive, Borders, Solid, Text
+ * Includes dark mode, APCA contrast-safe text, and alpha shadow scales.
+ */
+
+@import "../primitives.css";
+
+:root {
+  /* BACKGROUNDS */
+  --bg-default: var(--gray-50);
+  --bg-subtle: var(--gray-100);
+  --bg-muted: var(--gray-200);
+  --bg-primary: var(--primary-200);
+
+  /* INTERACTIVE COMPONENTS */
+  --interactive-default: var(--primary-500);
+  --interactive-hover: var(--primary-600);
+  --interactive-active: var(--primary-700);
+  --interactive-disabled: var(--gray-300);
+
+  /* BORDERS & SEPARATORS */
+  --border-default: var(--gray-300);
+  --border-muted: var(--gray-200);
+  --border-subtle: var(--gray-100);
+  --border-primary: var(--primary-500);
+
+  /* SOLID COLORS */
+  --solid-neutral: var(--gray-500);
+  --solid-primary: var(--primary-500);
+  --solid-positive: var(--green-600);
+  --solid-warning: var(--yellow-800);
+  --solid-danger: var(--red-700);
+
+  /* ACCESSIBLE TEXT */
+  --text-on-bg: var(--gray-900);
+  --text-muted: var(--gray-700);
+  --text-on-primary: var(--white);
+  --text-disabled: var(--gray-500);
+}
+
+/* DARK MODE OVERRIDES */
+.dark {
+  /* BACKGROUNDS */
+  --bg-default: var(--gray-900);
+  --bg-subtle: var(--gray-800);
+  --bg-muted: var(--gray-700);
+  --bg-primary: var(--primary-200);
+
+  /* INTERACTIVE */
+  --interactive-default: var(--primary-600-dark);
+  --interactive-hover: var(--primary-hover-dark);
+  --interactive-active: var(--primary-active-dark);
+  --interactive-disabled: var(--gray-600);
+
+  /* BORDERS */
+  --border-default: var(--gray-700);
+  --border-muted: var(--gray-800);
+  --border-subtle: var(--gray-900);
+  --border-primary: var(--primary-hover-dark);
+
+  /* SOLID COLORS */
+  --solid-neutral: var(--gray-400);
+  --solid-primary: var(--primary-hover-dark);
+  --solid-positive: var(--green-700-dark);
+  --solid-warning: var(--yellow-800);
+  --solid-danger: var(--red-800-dark);
+
+  /* TEXT */
+  --text-on-bg: var(--white);
+  --text-muted: var(--gray-200);
+  --text-on-primary: var(--black);
+  --text-disabled: var(--gray-500);
+}
+
+/* OVERLAYS & SHADOWS */
+:root {
+  --overlay-low: oklch(0 0 0 / 0.03);
+  --overlay-mid: oklch(0 0 0 / 0.08);
+  --overlay-high: oklch(0 0 0 / 0.16);
+
+  --shadow-soft: oklch(0 0 0 / 0.06);
+  --shadow-medium: oklch(0 0 0 / 0.12);
+  --shadow-hard: oklch(0 0 0 / 0.18);
+}

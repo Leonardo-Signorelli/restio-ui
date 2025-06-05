@@ -1,0 +1,41 @@
+.motion-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1rem;
+}
+
+.motion-swatch {
+  padding: 1rem;
+}
+
+.motion-label {
+  font-weight: bold;
+  margin-bottom: 0.25rem;
+}
+
+.motion-value {
+  font-family: monospace;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+}
+
+.motion-box {
+  width: 40px;
+  height: 40px;
+  background-color: var(--solid-primary);
+  border-radius: 4px;
+  animation-name: move;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-fill-mode: both;
+}
+
+@keyframes move {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(60px);
+  }
+}

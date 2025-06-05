@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./colors.css";
-import "./colorTokenStories.css";
+import "./colorStories.css";
 
 export default {
   title: "Design System/Colors",
@@ -50,7 +50,7 @@ const ColorSwatch = ({ name }: { readonly name: string }) => (
   </div>
 );
 
-export const AllTokens = () => {
+export const Colors = () => {
   const [darkMode, setDarkMode] = useState(false);
 
   return (
