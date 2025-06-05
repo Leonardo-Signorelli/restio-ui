@@ -4,6 +4,7 @@ import React, {
   useEffect,
   KeyboardEvent,
   ClipboardEvent,
+  useCallback,
 } from "react";
 import "./otp.css";
 import { OTPProps } from "./otp-types";
@@ -18,12 +19,15 @@ export const OTPComponent: React.FC<OTPProps> = ({
   const [otp, setOtp] = useState<string>("");
   const inputRefs = useRef<HTMLInputElement[]>([]);
 
-  const focusInput = (index: number) => {
-    if (index >= 0 && index < length) {
-      inputRefs.current[index]?.focus();
-      inputRefs.current[index]?.select();
-    }
-  };
+  const focusInput = useCallback(
+    (index: number) => {
+      if (index >= 0 && index < length) {
+        inputRefs.current[index]?.focus();
+        inputRefs.current[index]?.select();
+      }
+    },
+    [length]
+  );
 
   const handleInput = (e: React.FormEvent<HTMLInputElement>, index: number) => {
     const value = e.currentTarget.value;
@@ -101,7 +105,7 @@ export const OTPComponent: React.FC<OTPProps> = ({
     if (otp.length < length) {
       focusInput(Math.min(otp.length, length - 1));
     }
-  }, [otp]);
+  }, [focusInput, length, otp]);
 
   return (
     <div
@@ -112,7 +116,9 @@ export const OTPComponent: React.FC<OTPProps> = ({
       {Array.from({ length }).map((_, index) => (
         <input
           key={index}
-          ref={(el) => (inputRefs.current[index] = el as HTMLInputElement)}
+          ref={(el) => {
+            inputRefs.current[index] = el as HTMLInputElement;
+          }}
           type="text"
           inputMode="numeric"
           pattern="[0-9]*"
