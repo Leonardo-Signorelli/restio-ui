@@ -1,24 +1,39 @@
+/**
+ * Design System — Typography Tokens
+ * Includes headings, body text
+ */
+
+/**
+ * Design System — Typography Tokens
+ *
+ * ┌──────────────┬───────────────┬────────────────┬
+ * │ Property     │ Example Value │ Required?      │
+ * ├──────────────┼───────────────┼────────────────┼
+ * │ font-style   │ normal        │ optional       │
+ * │ font-variant │ normal        │ optional       │
+ * │ font-weight  │ 700           │ optional       │
+ * │ font-size    │ 16px          │ mandatory      │
+ * │ line-height  │ 1.2           │ optional       │
+ * │ font-family  │ sans-serif    │ mandatory      │
+ * └──────────────┴───────────────┴────────────────┴
+ */
+
+@import "../primitives.css";
+
 :root {
-  /**
-   * Typography Tokens
-   * Font families and scalable sizes with consistent line heights
-   */
-  --font-family-sans: "Inter", sans-serif; /* Primary UI font */
-  --font-family-mono:
-    "Fira Code", monospace; /* For code and fixed-width text */
+  /* Font tokens composed from primitives */
+  --font-display: var(--font-style-normal) var(--font-weight-bold)
+    var(--font-size-xl) / var(--line-height-lg) var(--font-family-sans);
 
-  --font-size-xs: 0.75rem; /* 12px - captions */
-  --font-size-sm: 0.875rem; /* 14px - small UI text */
-  --font-size-md: 1rem; /* 16px - base body text */
-  --font-size-lg: 1.125rem; /* 18px - subheadings */
-  --font-size-xl: 1.25rem; /* 20px - headings */
+  --font-heading: var(--font-style-normal) var(--font-weight-bold)
+    var(--font-size-lg) / var(--line-height-md) var(--font-family-sans);
 
-  --line-height-sm: 1.2; /* Tight line height (titles) */
-  --line-height-md: 1.5; /* Default body */
-  --line-height-lg: 1.75; /* Loose, for long-form text */
+  --font-body: var(--font-style-normal) var(--font-weight-regular)
+    var(--font-size-md) / var(--line-height-md) var(--font-family-sans);
 
-  --font-weight-light: 300; /* Default text weight */
-  --font-weight-regular: 400; /* Default text weight */
-  --font-weight-medium: 500; /* Emphasis */
-  --font-weight-bold: 700; /* Strong emphasis and headings */
+  --font-label: var(--font-style-normal) var(--font-weight-medium)
+    var(--font-size-sm) / var(--line-height-sm) var(--font-family-sans);
+
+  --font-code: var(--font-style-normal) var(--font-weight-regular)
+    var(--font-size-sm) / var(--line-height-sm) var(--font-family-mono);
 }
