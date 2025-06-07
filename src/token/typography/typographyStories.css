@@ -1,0 +1,28 @@
+.typography-sample {
+  margin: 1rem 0;
+}
+
+.display {
+  font: var(--font-display);
+}
+
+.heading {
+  font: var(--font-heading);
+}
+
+.body {
+  font: var(--font-body);
+}
+
+.label {
+  font: var(--font-label);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.code {
+  font: var(--font-code);
+  background-color: #f4f4f4;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+}

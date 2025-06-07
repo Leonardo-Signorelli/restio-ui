@@ -98,4 +98,32 @@
   --z-overlay: 500; /* Overlays and backdrops */
   --z-tooltip: 1000; /* Tooltips */
   --z-modal: 1100; /* Modals and dialogs */
+
+  /* ===================== */
+  /* TYPOGRAPHY TOKENS */
+  /* ===================== */
+  /* Typography Tokens
+  /* Font families and scalable sizes with consistent line heights */
+
+  --font-family-sans: "Inter", sans-serif; /* Primary UI font */
+  --font-family-mono:
+    "Fira Code", monospace; /* For code and fixed-width text */
+
+  --font-size-xs: 0.75rem; /* 12px - captions */
+  --font-size-sm: 0.875rem; /* 14px - small UI text */
+  --font-size-md: 1rem; /* 16px - base body text */
+  --font-size-lg: 1.125rem; /* 18px - subheadings */
+  --font-size-xl: 1.25rem; /* 20px - headings */
+
+  --line-height-sm: 1.2; /* Tight line height (titles) */
+  --line-height-md: 1.5; /* Default body */
+  --line-height-lg: 1.75; /* Loose, for long-form text */
+
+  --font-weight-light: 300; /* Default text weight */
+  --font-weight-regular: 400; /* Default text weight */
+  --font-weight-medium: 500; /* Emphasis */
+  --font-weight-bold: 700; /* Strong emphasis and headings */
+
+  --font-style-normal: normal; /* Normal font style */
+  --font-style-italic: italic; /* Italic font style */
 }
