@@ -1,4 +1,4 @@
-import "./spacing.css";
+import "./spacingStories.css";
 
 export default {
   title: "Design System/Spacing",

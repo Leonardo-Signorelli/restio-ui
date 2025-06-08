@@ -1,0 +1,39 @@
+:root {
+  /* ===================== */
+  /* BORDER COLOR TOKENS */
+  /* ===================== */
+
+  --border-default: var(
+    --gray-300
+  ); /* standard border (inputs, cards, containers) */
+  --border-muted: var(--gray-200); /* for separators and subtle borders */
+  --border-subtle: var(--gray-100); /* very subtle borders, table rows */
+  --border-strong: var(--gray-400); /* stronger border, emphasis cases */
+
+  --border-primary: var(--primary-500); /* interactive elements */
+  --border-primary-hover: var(--primary-600); /* on hover/focus */
+
+  --border-success: var(--green-600);
+  --border-warning: var(--yellow-800);
+  --border-danger: var(--red-700);
+
+  --border-focus: var(--primary-500); /* same as primary for now */
+
+  /* ===================== */
+  /* BORDER WIDTH TOKENS */
+  /* ===================== */
+
+  --border-width-thin: 0.5px;
+  --border-width-default: 1px;
+  --border-width-thick: 2px;
+
+  /* ===================== */
+  /* BORDER RADIUS (REUSED FROM EXISTING) */
+  /* ===================== */
+
+  /* Already defined: */
+  /* --radius-sm */
+  /* --radius-md */
+  /* --radius-lg */
+  /* --radius-full */
+}

@@ -1,0 +1,17 @@
+import React from "react";
+import { ReactSVG } from "react-svg";
+import { IconProps } from "./icon-types";
+
+export const Icon: React.FC<IconProps> = React.memo(({ icon }) => {
+  return (
+    <>
+      <ReactSVG
+        src={icon}
+        wrapper="svg"
+        role="application"
+        width={"1rem"}
+        height={"1rem"}
+      />
+    </>
+  );
+});
