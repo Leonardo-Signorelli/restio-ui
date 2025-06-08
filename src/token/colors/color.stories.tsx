@@ -1,5 +1,4 @@
 import { useState } from "react";
-import "./colors.css";
 import "./colorStories.css";
 
 export default {

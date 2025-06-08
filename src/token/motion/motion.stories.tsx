@@ -1,4 +1,4 @@
-import "./motion.css";
+import "./motionStories.css";
 
 export default {
   title: "Design System/Motion",

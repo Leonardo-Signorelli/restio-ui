@@ -1,10 +1,13 @@
-.spacing-box {
-  background-color: var(--primary-500);
-  border-radius: var(--radius-sm);
-  margin-bottom: 0.5rem;
-}
+/**
+ * Design System — Sizing tokens
+ */
 
-.spacing-label,
-.spacing-value {
-  font-size: 0.8rem;
+@import "../primitives.css";
+
+:root {
+  --space-zero: var(--space-0);
+  --space-xsmall: var(--space-1);
+  --space-small: var(--space-2);
+  --space-medium: var(--space-3);
+  --space-large: var(--space-4);
 }

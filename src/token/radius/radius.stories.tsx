@@ -1,4 +1,4 @@
-import "./radius.css";
+import "./radiusStories.css";
 
 export default {
   title: "Design System/Radius",

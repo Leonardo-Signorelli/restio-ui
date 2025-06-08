@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./elevation.css";
+import "./elevationStories.css";
 
 export default {
   title: "Design System/Elevation",
