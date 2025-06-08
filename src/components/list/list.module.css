@@ -1,0 +1,57 @@
+:root {
+  --smp-list-backgroundColor-base: var(--smp-backgroundColor-base);
+  --smp-list-backgroundColor-hover: var(--smp-backgroundColor-hover);
+  --smp-list-backgroundColor-focus: var(--smp-backgroundColor-focus);
+  --smp-list-outline-base: var(--smp-outline-base);
+  --smp-list-outlineOffset-base: var(--smp-outlineOffset-base);
+  --smp-list-outline-focus: var(--smp-outline-focus);
+  --smp-list-padding-base: var(--smp-padding-base);
+  --smp-list-font-base: var(--smp-fontBody-base);
+}
+
+.smp-list {
+  position: absolute;
+  top: 0;
+  left: 0;
+  max-width: 450px;
+  min-width: 100px;
+  position: anchor;
+  position-anchor: --input-anchor;
+
+  top: anchor(bottom); /* sotto l'input */
+  left: anchor(left); /* allineato a sinistra */
+  width: anchor-size(width); /* match width */
+}
+
+.smp-list-container {
+  background-color: var(--bg-default);
+  outline: none;
+}
+
+.smp-list-listItem {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: var(--smp-list-padding-base);
+  outline: var(--smp-list-outline-base);
+  outline-offset: var(--smp-list-outlineOffset-base);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  list-style-type: none;
+  font: var(--smp-list-font-base);
+}
+
+.smp-list-listItem:hover {
+  background-color: var(--smp-backgroundColor-hover);
+}
+
+.smp-list-listItem:focus {
+  background-color: var(--smp-backgroundColor-focus);
+}
+
+.smp-list-listItem[aria-selected="true"] {
+  outline: var(--smp-list-outline-focus);
+}

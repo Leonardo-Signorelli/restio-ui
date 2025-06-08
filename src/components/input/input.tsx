@@ -14,6 +14,8 @@ export const Input: React.FC<InputProps> = ({
   value,
   leadingIcon,
   trailingIcon,
+  onKeyDown,
+  anchorName,
 }) => {
   const inputClass = {
     inputWrapper: `${styles["rst-input-wrapper"]}`,
@@ -26,7 +28,12 @@ export const Input: React.FC<InputProps> = ({
       <label>Label</label>
       <span className={inputClass.inputWrapper}>
         {leadingIcon && <Icon icon={leadingIcon} />}
-        <input value={value} className={inputClass.input} />
+        <input
+          value={value}
+          className={inputClass.input}
+          onKeyDown={onKeyDown}
+          style={{ anchorName: `${anchorName}` }}
+        />
         {trailingIcon && <Icon icon={trailingIcon} />}
       </span>
       <span>Helper Text</span>

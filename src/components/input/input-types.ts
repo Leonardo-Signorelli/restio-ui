@@ -30,4 +30,7 @@ export interface InputProps {
     onChange?: (value: string) => void;
 
 
+    onKeyDown?: (e: React.KeyboardEvent) => void;
+
+    anchorName?: string; // Anchor name variable
 }
