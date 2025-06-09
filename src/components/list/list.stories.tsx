@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { List } from "./list";
+import { Option } from "../../types/global-types";
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {
@@ -14,18 +15,15 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-const mockedOptions = [
+const mockedOptions: Option[] = [
   {
-    id: "option_1",
-    label: "First option",
+    value: "option1",
   },
   {
-    id: "option_2",
-    label: "Second option",
+    value: "option2",
   },
   {
-    id: "option_3",
-    label: "Third option",
+    value: "option3",
   },
 ];
 

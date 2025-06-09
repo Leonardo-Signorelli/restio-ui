@@ -24,7 +24,7 @@ export const List: React.FC<ListProps> = ({
   // Filter the options based on filter value
   const filteredOptions = filterValue
     ? options.filter((o) =>
-        o.label.toLowerCase().includes(filterValue.toLowerCase())
+        o.value.toLowerCase().includes(filterValue.toLowerCase())
       )
     : options;
 
@@ -140,7 +140,7 @@ export const List: React.FC<ListProps> = ({
         onKeyDown={handleListKeyDown}
         aria-activedescendant={
           localSelectedIndex >= 0 && localSelectedIndex < filteredOptions.length
-            ? filteredOptions[localSelectedIndex]?.id
+            ? filteredOptions[localSelectedIndex]?.value
             : undefined
         }
       >
@@ -149,18 +149,18 @@ export const List: React.FC<ListProps> = ({
             <div className={style["rst-list-noElements"]}>No elements</div>
           ) : (
             virtualItems.map(({ item, index, offsetTop }) => {
-              const isActive = activeIndex.includes(item.id);
+              const isActive = activeIndex.includes(item.value);
               return (
                 <li
-                  key={item.id}
+                  key={index}
                   role="option"
-                  id={item.id}
+                  id={item.value}
                   aria-selected={
                     localSelectedIndex === index ? "true" : "false"
                   }
                   tabIndex={-1}
                   className={`${listClass.listItem} ${localSelectedIndex === index ? "selected-item" : ""}`}
-                  aria-label={item.id + "-" + item.label}
+                  aria-label={item.value}
                   style={{
                     height: `${listItemHeight}px`,
                     lineHeight: `calc(${listItemHeight}px - 2*2px)`,
@@ -171,7 +171,7 @@ export const List: React.FC<ListProps> = ({
                     setLocalSelectedIndex(index);
                   }}
                 >
-                  {item.label}
+                  {item.value}
                   {isActive && <Icon icon="check" />}
                 </li>
               );

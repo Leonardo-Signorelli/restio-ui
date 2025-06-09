@@ -2,6 +2,7 @@ import type { Meta, ReactRenderer, StoryObj } from "@storybook/react-vite";
 import { useArgs } from "storybook/preview-api";
 import { ArgsStoryFn } from "storybook/internal/types";
 import { Select } from "./select";
+import { SelectProps } from "./select-types";
 
 const meta = {
   title: "Components/Select",
@@ -16,37 +17,32 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-const ControlledCombobox: ArgsStoryFn<ReactRenderer, SelectProps> = ({
+const ControlledSelect: ArgsStoryFn<ReactRenderer, SelectProps> = ({
   ...args
 }) => {
-  const [, setArgs] = useArgs();
+  const [currentArgs, updateArgs] = useArgs();
 
-  const handleChange = (value: string, optionalDisplayValue?: string) => {
-    setArgs({
-      bindValue: value,
-      optionalDisplayValue: optionalDisplayValue,
-    });
+  const handleChange = (value: string) => {
+    updateArgs({ value: value });
   };
 
-  return <Select {...args} onChange={handleChange} />;
+  return <Select {...args} value={currentArgs.value} onChange={handleChange} />;
 };
 
 export const Default: Story = {
   args: {
+    value: "option1",
     options: [
       {
-        id: "option_1",
-        label: "First option",
+        value: "option1",
       },
       {
-        id: "option_2",
-        label: "Second option",
+        value: "option2",
       },
       {
-        id: "option_3",
-        label: "Third option",
+        value: "option3",
       },
     ],
   },
-  render: ControlledCombobox,
+  render: ControlledSelect,
 };

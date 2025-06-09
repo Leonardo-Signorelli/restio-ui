@@ -24,6 +24,10 @@ export const Input: React.FC<InputProps> = ({
     input: styles["rst-input"],
   };
 
+  const inputStyle = {
+    fieldWrapper: anchorName ? { anchorName } : undefined,
+  };
+
   const onChangeHandler: React.ChangeEventHandler<HTMLInputElement> = (
     event
   ) => {
@@ -34,7 +38,7 @@ export const Input: React.FC<InputProps> = ({
     <span className={inputClass.fieldWrapper}>
       {label && <label htmlFor={inputId}>{label}</label>}
 
-      <span className={inputClass.inputWrapper} style={{ anchorName }}>
+      <span className={inputClass.inputWrapper} style={inputStyle}>
         {leadingIcon && <Icon icon={leadingIcon} />}
         <input
           id={inputId}

@@ -1,31 +1,28 @@
 import React, { useState, useId } from "react";
 import { Input } from "../input/input";
 import { List } from "../list/list";
+import { SelectProps } from "./select-types";
+import { Option } from "./../../types/global-types";
 
 export const Select: React.FC<SelectProps> = ({
   value,
-  //   onChange,
-  options = [],
+  onChange,
+  options,
   multiActiveIndex,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [comboOptions, setComboOptions] = useState<[]>(options);
   const [selectedIndex, setSelectedIndex] = useState<number>(-1);
   const [activeIndex, setActiveIndex] = useState<string[]>([value]);
 
   const listboxId = useId();
 
-  //   useClickOutside(targetRef, () => setIsOpen(false));
-
-  //   useFocusTrap(isOpen, targetRef);
-
-  //   const selectOption = (option: DataCellOption) => {
-  //     onChange?.(option.id, option.label);
-  //     const index = comboOptions.findIndex((o) => o.id === option.id);
-  //     setSelectedIndex(index);
-  //     setActiveIndex([option.id]);
-  //     setIsOpen(false);
-  //   };
+  const selectOption = (option: Option) => {
+    onChange?.(option.value);
+    const index = options.findIndex((o) => o.value === option.value);
+    setSelectedIndex(index);
+    setActiveIndex([option.value]);
+    setIsOpen(false);
+  };
 
   const handleListKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === "Escape") {
@@ -37,20 +34,9 @@ export const Select: React.FC<SelectProps> = ({
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === "ArrowDown" || e.key === "ArrowUp") {
       e.preventDefault();
-      //   handleTextfieldClick();
       setIsOpen(true);
     }
   };
-
-  //   const handleTextfieldClick = () => {
-  //     if (fun && onOptionsRequest) {
-  //       onOptionsRequest(fun, undefined).then((data) => {
-  //         setComboOptions(data);
-  //         setSelectedIndex(data.length > 0 ? 0 : -1);
-  //         setIsOpen(true);
-  //       });
-  //     }
-  //   };
 
   return (
     <div
@@ -68,10 +54,10 @@ export const Select: React.FC<SelectProps> = ({
       {isOpen && (
         <List
           id={listboxId}
-          options={comboOptions}
+          options={options}
           selectedIndex={selectedIndex}
           activeIndex={multiActiveIndex || activeIndex}
-          // onClick={selectOption}
+          onClick={selectOption}
           onKeyDown={handleListKeyDown}
         ></List>
       )}

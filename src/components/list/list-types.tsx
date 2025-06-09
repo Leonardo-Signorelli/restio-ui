@@ -1,12 +1,13 @@
+import { Option } from "../../types/global-types";
+
 export interface ListProps {
   id?: string;
-  options: DataCellOption[];
-  displayMode?: DisplayMode;
+  options: Option[];
   ref?: React.Ref<HTMLElement | null>;
   showFilter?: boolean;
   selectedIndex?: number;
   activeIndex?: string[];
   width?: number;
-  onClick?: (option: DataCellOption) => void;
+  onClick?: (option: Option) => void;
   onKeyDown?: (e: React.KeyboardEvent) => void;
 }
