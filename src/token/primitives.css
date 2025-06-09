@@ -4,6 +4,7 @@
   /* ===================== */
 
   /* Gray scale */
+  --gray-0: oklch(1 0 0);
   --gray-50: oklch(0.98 0 0);
   --gray-100: oklch(0.95 0 0);
   --gray-200: oklch(0.9 0 0);
@@ -110,11 +111,11 @@
   --font-family-mono:
     "Fira Code", monospace; /* For code and fixed-width text */
 
-  --font-size-xs: 0.75rem; /* 12px - captions */
-  --font-size-sm: 0.875rem; /* 14px - small UI text */
-  --font-size-md: 1rem; /* 16px - base body text */
-  --font-size-lg: 1.125rem; /* 18px - subheadings */
-  --font-size-xl: 1.25rem; /* 20px - headings */
+  --font-size-xs: 0.75rem; /* 12px - captions and small text */
+  --font-size-sm: 0.875rem; /* 14px - base body text */
+  --font-size-md: 1rem; /* 16px - headings */
+  --font-size-lg: 1.125rem; /* 18px - heading2 */
+  --font-size-xl: 1.25rem; /* 20px - display */
 
   --line-height-sm: 1.2; /* Tight line height (titles) */
   --line-height-md: 1.5; /* Default body */

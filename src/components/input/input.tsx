@@ -1,35 +1,63 @@
-/**
- * Label
- * HelperText
- * Input
- * Chip
- * Icon
- */
-
+import React, { useId } from "react";
 import { Icon } from "../../utility-components/icon/icon";
 import { InputProps } from "./input-types";
 import styles from "./input.module.css";
 
 export const Input: React.FC<InputProps> = ({
   value,
+  onChange,
+  onKeyDown,
+  anchorName,
+  label,
+  helperText,
   leadingIcon,
   trailingIcon,
+  placeholder,
+  ariaLabel,
 }) => {
+  const inputId = useId();
+  const helperId = `${inputId}-helper`;
+
   const inputClass = {
-    inputWrapper: `${styles["rst-input-wrapper"]}`,
-    input: `${styles["rst-input"]}`,
+    fieldWrapper: styles["rst-inputField-wrapper"],
+    inputWrapper: styles["rst-input-wrapper"],
+    input: styles["rst-input"],
   };
-  //   ${styles[section.horizontal ? "smp-layout-section-horizontal" : "smp-layout-section-vertical"]} ${gridTemplateClass}
+
+  const inputStyle = {
+    fieldWrapper: anchorName ? { anchorName } : undefined,
+  };
+
+  const onChangeHandler: React.ChangeEventHandler<HTMLInputElement> = (
+    event
+  ) => {
+    onChange?.(event.target.value);
+  };
 
   return (
-    <span>
-      <label>Label</label>
-      <span className={inputClass.inputWrapper}>
+    <span className={inputClass.fieldWrapper}>
+      {label && <label htmlFor={inputId}>{label}</label>}
+
+      <span className={inputClass.inputWrapper} style={inputStyle}>
         {leadingIcon && <Icon icon={leadingIcon} />}
-        <input value={value} className={inputClass.input} />
+        <input
+          id={inputId}
+          value={value}
+          className={inputClass.input}
+          placeholder={placeholder}
+          onChange={onChangeHandler}
+          onKeyDown={onKeyDown}
+          aria-label={ariaLabel}
+          aria-describedby={helperText ? helperId : undefined}
+        />
         {trailingIcon && <Icon icon={trailingIcon} />}
       </span>
-      <span>Helper Text</span>
+
+      {helperText && (
+        <span id={helperId} aria-live="polite">
+          {helperText}
+        </span>
+      )}
     </span>
   );
 };

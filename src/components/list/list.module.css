@@ -1,0 +1,60 @@
+.rst-list {
+  position: absolute;
+  top: 0;
+  left: 0;
+  max-width: 450px;
+  min-width: 150px;
+  position: anchor;
+  position-anchor: --input-anchor;
+
+  top: calc(anchor(bottom) + 2px);
+  left: anchor(left); /* allineato a sinistra */
+  width: anchor-size(width); /* match width */
+  border-radius: var(--radius-md);
+  background-color: var(--bgColor-default);
+  border: 1px solid var(--border-default);
+  box-shadow: var(--elevation-2);
+}
+
+.rst-list-virtualScroll {
+  min-height: 24px;
+}
+
+.rst-list-input {
+  padding: var(--space-medium);
+  border-bottom: 1px solid var(--border-default);
+}
+
+.rst-list-container {
+  outline: none;
+  padding: var(--space-medium);
+}
+
+.rst-list-listItem {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: var(--space-medium);
+  outline: 2px solid transparent;
+  outline-offset: -2px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  list-style-type: none;
+  font: var(--font-body);
+  border-radius: var(--radius-md);
+}
+
+.rst-list-listItem:hover {
+  background-color: var(--bgColor-default-hover);
+}
+
+.rst-list-listItem:focus {
+  background-color: var(--bgColor-default-active);
+}
+
+.rst-list-listItem[aria-selected="true"] {
+  outline: 2px solid var(--interactive-default);
+}
