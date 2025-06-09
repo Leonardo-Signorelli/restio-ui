@@ -4,7 +4,7 @@ import { ArgsStoryFn } from "storybook/internal/types";
 import { Select } from "./select";
 
 const meta = {
-  title: "BasicComponents/Select",
+  title: "Components/Select",
   component: Select,
   parameters: {
     layout: "centered",

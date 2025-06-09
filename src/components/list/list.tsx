@@ -5,13 +5,10 @@ import { Input } from "../input/input";
 import { useVirtualListScroll } from "../../hooks/useVirtualListScroll";
 import { Icon } from "../../utility-components/icon/icon";
 
-const FILTER_THRESHOLD = 10;
-
 export const List: React.FC<ListProps> = ({
   id,
   options,
   ref,
-  showFilter,
   selectedIndex = null, // current outline element
   activeIndex = [], // active element
   width,
@@ -23,9 +20,6 @@ export const List: React.FC<ListProps> = ({
   const [localSelectedIndex, setLocalSelectedIndex] = useState<number>(
     selectedIndex !== null ? selectedIndex : -1
   );
-
-  const shouldShowFilter =
-    showFilter !== undefined ? showFilter : options.length > FILTER_THRESHOLD;
 
   // Filter the options based on filter value
   const filteredOptions = filterValue
@@ -111,10 +105,11 @@ export const List: React.FC<ListProps> = ({
 
   // Handle class for list
   const listClass = {
-    wrapper: `${style["smp-list"]}`,
-    container: `${style["smp-list-container"]}`,
-    virtualScroll: `${"smp-list-virtualScroll"}`,
-    listItem: `${style["smp-list-listItem"]}`,
+    wrapper: `${style["rst-list"]}`,
+    input: `${style["rst-list-input"]}`,
+    container: `${style["rst-list-container"]}`,
+    virtualScroll: `${"rst-list-virtualScroll"}`,
+    listItem: `${style["rst-list-listItem"]}`,
   };
 
   return (
@@ -127,14 +122,14 @@ export const List: React.FC<ListProps> = ({
         width: width,
       }}
     >
-      {shouldShowFilter && (
+      <div className={listClass.input}>
         <Input
           value={filterValue}
           placeholder="Search..."
           onChange={onListTextfieldChange}
           onKeyDown={handleFilterKeyDown}
         />
-      )}
+      </div>
 
       <div
         {...containerProps}

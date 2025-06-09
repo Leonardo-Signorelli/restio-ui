@@ -16,16 +16,19 @@ export const Input: React.FC<InputProps> = ({
   trailingIcon,
   onKeyDown,
   anchorName,
+  label,
+  helperText,
 }) => {
   const inputClass = {
+    fieldWrapper: `${styles["rst-inputField-wrapper"]}`,
     inputWrapper: `${styles["rst-input-wrapper"]}`,
     input: `${styles["rst-input"]}`,
   };
   //   ${styles[section.horizontal ? "smp-layout-section-horizontal" : "smp-layout-section-vertical"]} ${gridTemplateClass}
 
   return (
-    <span>
-      <label>Label</label>
+    <span className={inputClass.fieldWrapper}>
+      {label && <label>{label}</label>}
       <span className={inputClass.inputWrapper}>
         {leadingIcon && <Icon icon={leadingIcon} />}
         <input
@@ -36,7 +39,7 @@ export const Input: React.FC<InputProps> = ({
         />
         {trailingIcon && <Icon icon={trailingIcon} />}
       </span>
-      <span>Helper Text</span>
+      {helperText && <span>{helperText}</span>}
     </span>
   );
 };

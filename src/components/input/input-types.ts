@@ -33,4 +33,8 @@ export interface InputProps {
     onKeyDown?: (e: React.KeyboardEvent) => void;
 
     anchorName?: string; // Anchor name variable
+
+    label?: string
+
+    helperText?: string;
 }

@@ -11,7 +11,7 @@ export const Select: React.FC<SelectProps> = ({
   const [isOpen, setIsOpen] = useState(false);
   const [comboOptions, setComboOptions] = useState<[]>(options);
   const [selectedIndex, setSelectedIndex] = useState<number>(-1);
-  //   const [activeIndex, setActiveIndex] = useState<string[]>([value]);
+  const [activeIndex, setActiveIndex] = useState<string[]>([value]);
 
   const listboxId = useId();
 
@@ -70,8 +70,8 @@ export const Select: React.FC<SelectProps> = ({
           id={listboxId}
           options={comboOptions}
           selectedIndex={selectedIndex}
-          //   activeIndex={multiActiveIndex || activeIndex}
-          //   onClick={selectOption}
+          activeIndex={multiActiveIndex || activeIndex}
+          onClick={selectOption}
           onKeyDown={handleListKeyDown}
         ></List>
       )}

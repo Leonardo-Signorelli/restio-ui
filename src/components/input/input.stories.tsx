@@ -18,3 +18,13 @@ export const Default: Story = {
     trailingIcon: "close",
   },
 };
+
+export const FullInput: Story = {
+  args: {
+    value: "Default input",
+    leadingIcon: "search",
+    trailingIcon: "close",
+    helperText: "Helper text down here",
+    label: "Label",
+  },
+};

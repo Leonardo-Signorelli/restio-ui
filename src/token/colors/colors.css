@@ -8,10 +8,14 @@
 
 :root {
   /* BACKGROUNDS */
-  --bg-default: var(--gray-50);
-  --bg-subtle: var(--gray-100);
-  --bg-muted: var(--gray-200);
-  --bg-primary: var(--primary-200);
+  --bgColor-default: var(--gray-0);
+  --bgColor-default-hover: var(--gray-100);
+  --bgColor-default-active: var(--gray-300);
+  --bgColor-default-disabled: var(--gray-200);
+  --bgColor-default-selected: var(--gray-50);
+  --bgColor-subtle: var(--gray-100);
+  --bgColor-muted: var(--gray-200);
+  --bgColor-primary: var(--primary-200);
 
   /* INTERACTIVE COMPONENTS */
   --interactive-default: var(--primary-500);

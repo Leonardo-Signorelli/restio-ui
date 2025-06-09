@@ -26,14 +26,14 @@
     var(--font-size-xl) / var(--line-height-lg) var(--font-family-sans);
 
   --font-heading: var(--font-style-normal) var(--font-weight-bold)
-    var(--font-size-lg) / var(--line-height-md) var(--font-family-sans);
-
-  --font-body: var(--font-style-normal) var(--font-weight-regular)
     var(--font-size-md) / var(--line-height-md) var(--font-family-sans);
 
+  --font-body: var(--font-style-normal) var(--font-weight-regular)
+    var(--font-size-sm) / var(--line-height-md) var(--font-family-sans);
+
   --font-label: var(--font-style-normal) var(--font-weight-medium)
-    var(--font-size-sm) / var(--line-height-sm) var(--font-family-sans);
+    var(--font-size-xs) / var(--line-height-sm) var(--font-family-sans);
 
   --font-code: var(--font-style-normal) var(--font-weight-regular)
-    var(--font-size-sm) / var(--line-height-sm) var(--font-family-mono);
+    var(--font-size-xs) / var(--line-height-sm) var(--font-family-mono);
 }
