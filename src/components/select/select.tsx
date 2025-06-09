@@ -71,7 +71,7 @@ export const Select: React.FC<SelectProps> = ({
           options={comboOptions}
           selectedIndex={selectedIndex}
           activeIndex={multiActiveIndex || activeIndex}
-          onClick={selectOption}
+          // onClick={selectOption}
           onKeyDown={handleListKeyDown}
         ></List>
       )}

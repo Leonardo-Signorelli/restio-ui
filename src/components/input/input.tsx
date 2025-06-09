@@ -1,45 +1,59 @@
-/**
- * Label
- * HelperText
- * Input
- * Chip
- * Icon
- */
-
+import React, { useId } from "react";
 import { Icon } from "../../utility-components/icon/icon";
 import { InputProps } from "./input-types";
 import styles from "./input.module.css";
 
 export const Input: React.FC<InputProps> = ({
   value,
-  leadingIcon,
-  trailingIcon,
+  onChange,
   onKeyDown,
   anchorName,
   label,
   helperText,
+  leadingIcon,
+  trailingIcon,
+  placeholder,
+  ariaLabel,
 }) => {
+  const inputId = useId();
+  const helperId = `${inputId}-helper`;
+
   const inputClass = {
-    fieldWrapper: `${styles["rst-inputField-wrapper"]}`,
-    inputWrapper: `${styles["rst-input-wrapper"]}`,
-    input: `${styles["rst-input"]}`,
+    fieldWrapper: styles["rst-inputField-wrapper"],
+    inputWrapper: styles["rst-input-wrapper"],
+    input: styles["rst-input"],
   };
-  //   ${styles[section.horizontal ? "smp-layout-section-horizontal" : "smp-layout-section-vertical"]} ${gridTemplateClass}
+
+  const onChangeHandler: React.ChangeEventHandler<HTMLInputElement> = (
+    event
+  ) => {
+    onChange?.(event.target.value);
+  };
 
   return (
     <span className={inputClass.fieldWrapper}>
-      {label && <label>{label}</label>}
-      <span className={inputClass.inputWrapper}>
+      {label && <label htmlFor={inputId}>{label}</label>}
+
+      <span className={inputClass.inputWrapper} style={{ anchorName }}>
         {leadingIcon && <Icon icon={leadingIcon} />}
         <input
+          id={inputId}
           value={value}
           className={inputClass.input}
+          placeholder={placeholder}
+          onChange={onChangeHandler}
           onKeyDown={onKeyDown}
-          style={{ anchorName: `${anchorName}` }}
+          aria-label={ariaLabel}
+          aria-describedby={helperText ? helperId : undefined}
         />
         {trailingIcon && <Icon icon={trailingIcon} />}
       </span>
-      {helperText && <span>{helperText}</span>}
+
+      {helperText && (
+        <span id={helperId} aria-live="polite">
+          {helperText}
+        </span>
+      )}
     </span>
   );
 };

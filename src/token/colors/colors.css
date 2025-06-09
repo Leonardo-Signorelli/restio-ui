@@ -23,12 +23,6 @@
   --interactive-active: var(--primary-700);
   --interactive-disabled: var(--gray-300);
 
-  /* BORDERS & SEPARATORS */
-  --border-default: var(--gray-300);
-  --border-muted: var(--gray-200);
-  --border-subtle: var(--gray-100);
-  --border-primary: var(--primary-500);
-
   /* SOLID COLORS */
   --solid-neutral: var(--gray-500);
   --solid-primary: var(--primary-500);

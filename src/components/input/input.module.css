@@ -1,34 +1,39 @@
-.rst-inputField-wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-small);
-}
-
 .rst-input-wrapper {
   display: flex;
   flex-direction: row;
   align-items: center;
   gap: var(--space-small);
-
-  /* style */
   border: var(--border-width-default) solid var(--border-default);
   border-radius: var(--radius-md);
-  background-color: var(--bgColor-default);
+  background-color: var(--bg-default);
   padding: var(--space-small);
   font: var(--font-body);
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
-/* INPUT */
+.rst-input-wrapper:focus-within {
+  outline: 1px solid var(--border-primary);
+  outline-offset: -1px;
+}
+
 .rst-input {
-  width: -webkit-fill-available;
+  width: 100%;
   border: none;
   outline: none;
   background-color: transparent;
   font: inherit;
+  color: var(--text-on-bg);
   cursor: inherit;
-  color: inherit;
+}
 
-  &::placeholder {
-    color: var(--smp-textField-placeholderColor-base);
-  }
+.rst-input:disabled {
+  color: var(--text-disabled);
+  cursor: not-allowed;
+  background-color: var(--bg-muted);
+}
+
+.rst-input::placeholder {
+  color: var(--text-disabled);
 }

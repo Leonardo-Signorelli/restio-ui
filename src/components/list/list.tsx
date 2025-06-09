@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import style from "./list.module.css";
 import { ListProps } from "./list-types";
 import { Input } from "../input/input";
 import { useVirtualListScroll } from "../../hooks/useVirtualListScroll";
 import { Icon } from "../../utility-components/icon/icon";
+import style from "./list.module.css";
 
 export const List: React.FC<ListProps> = ({
   id,
@@ -108,7 +108,7 @@ export const List: React.FC<ListProps> = ({
     wrapper: `${style["rst-list"]}`,
     input: `${style["rst-list-input"]}`,
     container: `${style["rst-list-container"]}`,
-    virtualScroll: `${"rst-list-virtualScroll"}`,
+    virtualScroll: `${style["rst-list-virtualScroll"]}`,
     listItem: `${style["rst-list-listItem"]}`,
   };
 
@@ -145,32 +145,38 @@ export const List: React.FC<ListProps> = ({
         }
       >
         <div {...innerProps} className={listClass.virtualScroll}>
-          {virtualItems.map(({ item, index, offsetTop }) => {
-            const isActive = activeIndex.includes(item.id);
-            return (
-              <li
-                key={item.id}
-                role="option"
-                id={item.id}
-                aria-selected={localSelectedIndex === index ? "true" : "false"}
-                tabIndex={-1}
-                className={`${listClass.listItem} ${localSelectedIndex === index ? "selected-item" : ""}`}
-                aria-label={item.id + "-" + item.label}
-                style={{
-                  height: `${listItemHeight}px`,
-                  lineHeight: `calc(${listItemHeight}px - 2*2px)`, // lineHeight - 2*padding
-                  transform: `translateY(${offsetTop}px)`,
-                }}
-                onClick={() => {
-                  onClick?.(item);
-                  setLocalSelectedIndex(index);
-                }}
-              >
-                {item.label}
-                {isActive && <Icon icon="check" />}
-              </li>
-            );
-          })}
+          {filteredOptions.length < 1 ? (
+            <div className={style["rst-list-noElements"]}>No elements</div>
+          ) : (
+            virtualItems.map(({ item, index, offsetTop }) => {
+              const isActive = activeIndex.includes(item.id);
+              return (
+                <li
+                  key={item.id}
+                  role="option"
+                  id={item.id}
+                  aria-selected={
+                    localSelectedIndex === index ? "true" : "false"
+                  }
+                  tabIndex={-1}
+                  className={`${listClass.listItem} ${localSelectedIndex === index ? "selected-item" : ""}`}
+                  aria-label={item.id + "-" + item.label}
+                  style={{
+                    height: `${listItemHeight}px`,
+                    lineHeight: `calc(${listItemHeight}px - 2*2px)`,
+                    transform: `translateY(${offsetTop}px)`,
+                  }}
+                  onClick={() => {
+                    onClick?.(item);
+                    setLocalSelectedIndex(index);
+                  }}
+                >
+                  {item.label}
+                  {isActive && <Icon icon="check" />}
+                </li>
+              );
+            })
+          )}
         </div>
       </div>
     </div>

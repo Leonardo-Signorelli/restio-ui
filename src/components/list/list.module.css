@@ -7,12 +7,17 @@
   position: anchor;
   position-anchor: --input-anchor;
 
-  top: anchor(bottom); /* sotto l'input */
+  top: calc(anchor(bottom) + 2px);
   left: anchor(left); /* allineato a sinistra */
   width: anchor-size(width); /* match width */
   border-radius: var(--radius-md);
   background-color: var(--bgColor-default);
   border: 1px solid var(--border-default);
+  box-shadow: var(--elevation-2);
+}
+
+.rst-list-virtualScroll {
+  min-height: 24px;
 }
 
 .rst-list-input {
