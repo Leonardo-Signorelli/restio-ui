@@ -22,6 +22,7 @@ export const Primary: Story = {
   args: {
     variant: "primary",
     children: "Primary Button",
+    value: "Ciao",
   },
 };
 
