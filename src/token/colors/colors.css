@@ -15,7 +15,8 @@
   --bgColor-default-selected: var(--gray-50);
   --bgColor-subtle: var(--gray-100);
   --bgColor-muted: var(--gray-200);
-  --bgColor-primary: var(--primary-200);
+  --bgColor-primary: var(--primary-500);
+  --bgColor-overlay: var(--gray-0);
 
   /* INTERACTIVE COMPONENTS */
   --interactive-default: var(--primary-500);

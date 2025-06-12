@@ -1,6 +1,7 @@
 import React from "react";
 import { ButtonProps } from "./button-types";
 import styles from "./Button.module.css"; // Importa il modulo CSS
+import { Icon } from "../../utility-components/icon/icon";
 
 export const Button: React.FC<ButtonProps> = ({
   variant = "primary",
@@ -10,7 +11,7 @@ export const Button: React.FC<ButtonProps> = ({
   value,
   alignContent = "center",
   anchorName,
-  leadingVisual,
+  leadingVisual = "left",
   trailingVisual,
   ...props
 }) => {
@@ -34,11 +35,7 @@ export const Button: React.FC<ButtonProps> = ({
       {...props}
       style={{ anchorName: anchorName }}
     >
-      {leadingVisual && (
-        <span className={styles.button__leadingVisual}>
-          {React.createElement(leadingVisual)}
-        </span>
-      )}
+      {leadingVisual && <Icon icon={"left"}></Icon>}
       {value}
       {trailingVisual && (
         <span className={styles.button__trailingVisual}>

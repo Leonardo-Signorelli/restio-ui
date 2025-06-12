@@ -19,19 +19,20 @@ const meta: Meta<ButtonProps> = {
 export default meta;
 type Story = StoryObj<ButtonProps>;
 
+export const Base: Story = {
+  args: {
+    children: "Secondary Button",
+    variant: "base",
+    value: "Button",
+  },
+};
+
 export const Primary: Story = {
   args: {
     variant: "primary",
     children: "Primary Button",
     value: "Button",
-  },
-};
-
-export const Secondary: Story = {
-  args: {
-    children: "Secondary Button",
-    variant: "base",
-    value: "Button",
+    leadingVisual: "left",
   },
 };
 
