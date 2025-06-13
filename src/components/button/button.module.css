@@ -1,3 +1,87 @@
+/* Button.module.css */
+
+/* Base button styles */
 .button {
-  background-color: var(--bg-default);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  font-weight: 600;
+  transition:
+    background-color 0.2s,
+    opacity 0.2s,
+    transform 0.2s;
+  cursor: pointer;
+}
+
+/* Size variations */
+.button--small {
+  padding: 8px 12px;
+  font-size: 12px;
+}
+
+/* Variant styles */
+.button--base {
+  background-color: var(--bgColor-default);
+  color: var(--text-secondary);
+  border: 1px solid var(--gray-300);
+  &:hover {
+    background-color: var(--bgColor-default-hover);
+  }
+
+  &:active {
+    background-color: var(--bgColor-default-active);
+  }
+}
+
+.button--primary {
+  background-color: var(--bgColor-primary);
+  color: var(--text-on-primary);
+  border: 1px solid var(--interactive-default);
+}
+
+.button--danger {
+  background-color: var(--solid-danger);
+  color: var(--text-on-primary);
+  border: 1px solid var(--solid-danger);
+}
+
+.button--invisible {
+  background-color: transparent;
+  color: var(--interactive-default);
+  border: none;
+}
+
+.button--link {
+  background-color: transparent;
+  color: var(--interactive-default);
+  border: none;
+  text-decoration: underline;
+}
+
+/* Disabled & Loading states */
+.button--disabled {
+  background-color: var(--bgColor-default-disabled);
+  color: var(--text-disabled);
+  border: 1px solid var(--gray-300);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.button--loading {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.button__leading-visual,
+.button__trailing-visual {
+  margin: 0 8px;
+}
+
+.button--center {
+  justify-content: center;
+}
+
+.button--start {
+  justify-content: flex-start;
 }

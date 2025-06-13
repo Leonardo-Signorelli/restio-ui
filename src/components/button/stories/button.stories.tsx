@@ -1,5 +1,6 @@
-import { Button, ButtonProps } from "./button";
+import { Button } from "../button";
 import { Meta, StoryObj } from "@storybook/react-vite";
+import { ButtonProps } from "../button-types";
 
 const meta: Meta<ButtonProps> = {
   title: "Components/Button",
@@ -18,23 +19,8 @@ const meta: Meta<ButtonProps> = {
 export default meta;
 type Story = StoryObj<ButtonProps>;
 
-export const Primary: Story = {
+export const Default: Story = {
   args: {
-    variant: "primary",
-    children: "Primary Button",
-  },
-};
-
-export const Secondary: Story = {
-  args: {
-    variant: "secondary",
-    children: "Secondary Button",
-  },
-};
-
-export const Ghost: Story = {
-  args: {
-    variant: "ghost",
-    children: "Ghost Button",
+    value: "Button",
   },
 };

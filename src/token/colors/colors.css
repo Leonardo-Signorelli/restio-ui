@@ -8,14 +8,15 @@
 
 :root {
   /* BACKGROUNDS */
-  --bgColor-default: var(--gray-0);
-  --bgColor-default-hover: var(--gray-100);
-  --bgColor-default-active: var(--gray-300);
-  --bgColor-default-disabled: var(--gray-200);
-  --bgColor-default-selected: var(--gray-50);
-  --bgColor-subtle: var(--gray-100);
-  --bgColor-muted: var(--gray-200);
-  --bgColor-primary: var(--primary-200);
+
+  --bgColor-0: var(--gray-0);
+  --bgColor-overlay: var(--gray-0);
+  --bgColor-default: var(--gray-100);
+  --bgColor-default-hover: var(--gray-110);
+  --bgColor-default-focus: var(--gray-120);
+  --bgColor-default-active: var(--gray-130);
+  --bgColor-default-disabled: var(--gray-400);
+  --bgColor-primary: var(--primary-500);
 
   /* INTERACTIVE COMPONENTS */
   --interactive-default: var(--primary-500);
@@ -31,43 +32,9 @@
   --solid-danger: var(--red-700);
 
   /* ACCESSIBLE TEXT */
-  --text-on-bg: var(--gray-900);
-  --text-muted: var(--gray-700);
+  --text-primary: var(--gray-900);
+  --text-secondary: var(--gray-700);
   --text-on-primary: var(--white);
-  --text-disabled: var(--gray-500);
-}
-
-/* DARK MODE OVERRIDES */
-.dark {
-  /* BACKGROUNDS */
-  --bg-default: var(--gray-900);
-  --bg-subtle: var(--gray-800);
-  --bg-muted: var(--gray-700);
-  --bg-primary: var(--primary-200);
-
-  /* INTERACTIVE */
-  --interactive-default: var(--primary-600-dark);
-  --interactive-hover: var(--primary-hover-dark);
-  --interactive-active: var(--primary-active-dark);
-  --interactive-disabled: var(--gray-600);
-
-  /* BORDERS */
-  --border-default: var(--gray-700);
-  --border-muted: var(--gray-800);
-  --border-subtle: var(--gray-900);
-  --border-primary: var(--primary-hover-dark);
-
-  /* SOLID COLORS */
-  --solid-neutral: var(--gray-400);
-  --solid-primary: var(--primary-hover-dark);
-  --solid-positive: var(--green-700-dark);
-  --solid-warning: var(--yellow-800);
-  --solid-danger: var(--red-800-dark);
-
-  /* TEXT */
-  --text-on-bg: var(--white);
-  --text-muted: var(--gray-200);
-  --text-on-primary: var(--black);
   --text-disabled: var(--gray-500);
 }
 

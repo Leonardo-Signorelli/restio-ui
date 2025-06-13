@@ -1,8 +1,8 @@
 import React, { useState, useId } from "react";
-import { Input } from "../input/input";
 import { List } from "../list/list";
 import { SelectProps } from "./select-types";
 import { Option } from "./../../types/global-types";
+import { Button } from "../button/button";
 
 export const Select: React.FC<SelectProps> = ({
   value,
@@ -31,13 +31,6 @@ export const Select: React.FC<SelectProps> = ({
     }
   };
 
-  const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === "ArrowDown" || e.key === "ArrowUp") {
-      e.preventDefault();
-      setIsOpen(true);
-    }
-  };
-
   return (
     <div
       role="combobox"
@@ -46,11 +39,12 @@ export const Select: React.FC<SelectProps> = ({
       aria-owns={listboxId}
       data-component="combobox"
     >
-      <Input
-        value={value}
-        onKeyDown={handleKeyDown}
+      <Button
+        value={value || "Select an option"}
         anchorName="--input-anchor"
-      />
+        onClick={() => setIsOpen((prev) => !prev)}
+        aria-label="Aria-label"
+      ></Button>
       {isOpen && (
         <List
           id={listboxId}

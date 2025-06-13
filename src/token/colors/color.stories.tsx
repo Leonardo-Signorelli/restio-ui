@@ -6,7 +6,7 @@ export default {
 };
 
 const colorGroups = {
-  Backgrounds: ["--bg-default", "--bg-subtle", "--bg-muted", "--bg-primary"],
+  Backgrounds: ["--bgColor-default", "--bgColor-0", "--bgColor-primary"],
   Interactive: [
     "--interactive-default",
     "--interactive-hover",
