@@ -1,9 +1,9 @@
-import { Button } from "./button";
+import { Button } from "../button";
 import { Meta, StoryObj } from "@storybook/react-vite";
-import { ButtonProps } from "./button-types";
+import { ButtonProps } from "../button-types";
 
 const meta: Meta<ButtonProps> = {
-  title: "Components/Button",
+  title: "Components/Button/Multi",
   component: Button,
   argTypes: {
     variant: {
@@ -19,20 +19,22 @@ const meta: Meta<ButtonProps> = {
 export default meta;
 type Story = StoryObj<ButtonProps>;
 
-export const Base: Story = {
+export const Variant: Story = {
+  render: (args) => (
+    <div style={{ display: "flex", gap: "1rem" }}>
+      <Button {...args} variant="base">
+        Base Button
+      </Button>
+      <Button {...args} variant="primary">
+        Primary Button
+      </Button>
+      <Button {...args} variant="danger">
+        Ghost Button
+      </Button>
+    </div>
+  ),
   args: {
-    children: "Secondary Button",
-    variant: "base",
     value: "Button",
-  },
-};
-
-export const Primary: Story = {
-  args: {
-    variant: "primary",
-    children: "Primary Button",
-    value: "Button",
-    leadingVisual: "left",
   },
 };
 

@@ -4,14 +4,14 @@ import styles from "./Button.module.css"; // Importa il modulo CSS
 import { Icon } from "../../utility-components/icon/icon";
 
 export const Button: React.FC<ButtonProps> = ({
-  variant = "primary",
+  variant = "base",
   size = "medium",
   loading = false,
   disabled = false,
   value,
   alignContent = "center",
   anchorName,
-  leadingVisual = "left",
+  leadingVisual,
   trailingVisual,
   ...props
 }) => {
