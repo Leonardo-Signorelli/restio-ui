@@ -5,5 +5,5 @@
 @import "./token/colors/colors.css";
 @import "./token/typography/typography.css";
 @import "./token/primitives.css";
-@import "./token/spacing/spacing.css";
+@import "./token/dimension/dimension.css";
 @import "./token/borders/borders.css";

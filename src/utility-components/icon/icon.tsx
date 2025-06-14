@@ -3,10 +3,12 @@ import { ReactSVG } from "react-svg";
 import { IconProps } from "./icon-types";
 
 export const Icon: React.FC<IconProps> = React.memo(({ icon }) => {
+  const internalSvgPath = `assets/svg/${icon}.svg`;
+
   return (
     <>
       <ReactSVG
-        src={icon}
+        src={internalSvgPath}
         wrapper="svg"
         role="application"
         width={"1rem"}

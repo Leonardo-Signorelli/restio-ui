@@ -15,8 +15,13 @@
   --bgColor-default-hover: var(--gray-110);
   --bgColor-default-focus: var(--gray-120);
   --bgColor-default-active: var(--gray-130);
-  --bgColor-default-disabled: var(--gray-400);
-  --bgColor-primary: var(--primary-500);
+  --bgColor-default-disabled: var(--gray-200);
+  --bgColor-primary: var(--primary-600);
+  --bgColor-primary-hover: var(--primary-610);
+  --bgColor-primary-focus: var(--primary-620);
+  --bgColor-primary-active: var(--primary-630);
+  --bgColor-danger-hover: var(--red-700);
+  --bgColor-danger-active: var(--red-800);
 
   /* INTERACTIVE COMPONENTS */
   --interactive-default: var(--primary-500);
@@ -34,8 +39,10 @@
   /* ACCESSIBLE TEXT */
   --text-primary: var(--gray-900);
   --text-secondary: var(--gray-700);
-  --text-on-primary: var(--white);
+  --text-on-primary: var(--gray-0);
+  --text-on-danger: var(--gray-0);
   --text-disabled: var(--gray-500);
+  --text-danger: var(--red-700);
 }
 
 /* OVERLAYS & SHADOWS */

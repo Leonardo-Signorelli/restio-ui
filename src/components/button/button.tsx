@@ -35,13 +35,9 @@ export const Button: React.FC<ButtonProps> = ({
       {...props}
       style={{ anchorName: anchorName }}
     >
-      {leadingVisual && <Icon icon={"left"}></Icon>}
+      {leadingVisual && <Icon icon={"check"}></Icon>}
       {value}
-      {trailingVisual && (
-        <span className={styles.button__trailingVisual}>
-          {React.createElement(trailingVisual)}
-        </span>
-      )}
+      {trailingVisual && <Icon icon={"check"}></Icon>}
     </button>
   );
 };

@@ -1,6 +1,5 @@
 export default {
   extends: ["stylelint-config-standard"],
-  plugins: ["stylelint-order"],
   rules: {
     "selector-max-id": 0,
     "declaration-block-no-duplicate-properties": true,
