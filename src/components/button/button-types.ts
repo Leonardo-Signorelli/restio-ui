@@ -7,6 +7,6 @@ leadingVisual?: string;
 trailingVisual?: string;
 loading?: boolean;
 size?: "small" | "medium" | "large";
-variant?: "base" | "primary" | "danger" | "invisible" | "link" // change the visual style
+variant?: "base" | "primary" | "danger" | "invisible" | "link"
 disabled?: boolean
 }

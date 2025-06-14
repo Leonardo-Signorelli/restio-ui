@@ -3,28 +3,43 @@
 /* Base button styles */
 .button {
   display: inline-flex;
+  gap: var(--space-small);
   align-items: center;
   justify-content: center;
-  border-radius: 4px;
-  font-weight: 600;
   transition:
     background-color 0.2s,
     opacity 0.2s,
     transform 0.2s;
   cursor: pointer;
+  border-radius: var(--radius-md);
 }
 
-/* Size variations */
+/* SIZING DIMENSION */
 .button--small {
-  padding: 8px 12px;
-  font-size: 12px;
+  padding: var(--space-xsmall) var(--space-small);
+  font-size: var(--font-size-xs);
+  height: var(--size-small);
 }
 
-/* Variant styles */
-.button--base {
-  background-color: var(--bgColor-default);
+.button--medium {
+  padding: var(--space-small) var(--space-medium);
+  font-size: var(--font-size-sm);
+  height: var(--size-medium);
+}
+
+.button--large {
+  padding: var(--space-medium) var(--space-large);
+  font-size: var(--font-size-sm);
+  height: var(--size-large);
+}
+
+/* VARIANT STYLE */
+.button--base,
+.button--invisible,
+.button--link {
+  background-color: transparent;
   color: var(--text-secondary);
-  border: 1px solid var(--gray-300);
+  border: 1px solid transparent;
   &:hover {
     background-color: var(--bgColor-default-hover);
   }
@@ -34,28 +49,41 @@
   }
 }
 
+.button--base {
+  border: 1px solid var(--border-default);
+  background-color: var(--bgColor-default);
+}
+
 .button--primary {
   background-color: var(--bgColor-primary);
   color: var(--text-on-primary);
-  border: 1px solid var(--interactive-default);
+  border: 1px solid var(--borderColor-primary);
+
+  &:hover {
+    background-color: var(--bgColor-primary-hover);
+  }
+
+  &:active {
+    background-color: var(--bgColor-primary-active);
+  }
 }
 
 .button--danger {
-  background-color: var(--solid-danger);
-  color: var(--text-on-primary);
-  border: 1px solid var(--solid-danger);
-}
+  border: 1px solid var(--border-default);
+  background-color: var(--bgColor-default);
+  color: var(--text-danger);
+  &:hover {
+    background-color: var(--bgColor-danger-hover);
+    color: var(--text-on-danger);
+  }
 
-.button--invisible {
-  background-color: transparent;
-  color: var(--interactive-default);
-  border: none;
+  &:active {
+    background-color: var(--bgColor-danger-active);
+  }
 }
 
 .button--link {
-  background-color: transparent;
   color: var(--interactive-default);
-  border: none;
   text-decoration: underline;
 }
 
@@ -63,9 +91,13 @@
 .button--disabled {
   background-color: var(--bgColor-default-disabled);
   color: var(--text-disabled);
-  border: 1px solid var(--gray-300);
+  border: 1px solid var(--border-default);
   cursor: not-allowed;
   opacity: 0.6;
+  &:hover,
+  &:active {
+    background-color: var(--bgColor-default-disabled);
+  }
 }
 
 .button--loading {

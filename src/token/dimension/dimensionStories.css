@@ -1,10 +1,10 @@
-.spacing-box {
+.dimension-box {
   background-color: var(--primary-500);
   border-radius: var(--radius-sm);
   margin-bottom: 0.5rem;
 }
 
-.spacing-label,
-.spacing-value {
+.dimension-label,
+.dimension-value {
   font-size: 0.8rem;
 }

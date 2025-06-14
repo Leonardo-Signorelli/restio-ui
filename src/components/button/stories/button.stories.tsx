@@ -24,3 +24,10 @@ export const Default: Story = {
     value: "Button",
   },
 };
+
+export const Disable: Story = {
+  args: {
+    value: "Button",
+    disabled: true,
+  },
+};

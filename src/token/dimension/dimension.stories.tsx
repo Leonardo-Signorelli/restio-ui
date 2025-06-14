@@ -1,10 +1,10 @@
-import "./spacingStories.css";
+import "./dimensionStories.css";
 
 export default {
-  title: "Design System/Spacing",
+  title: "Design System/dimension",
 };
 
-const spacingTokens = [
+const dimensionTokens = [
   "--space-0",
   "--space-1",
   "--space-2",
@@ -16,28 +16,28 @@ const spacingTokens = [
   "--space-10",
 ];
 
-const SpacingSwatch = ({ name }: { readonly name: string }) => {
+const dimensionSwatch = ({ name }: { readonly name: string }) => {
   return (
     <div className="token-swatch">
       <div
-        className="spacing-box"
+        className="dimension-box"
         style={{ height: `var(${name})`, width: `var(${name})` }}
       />
-      <div className="spacing-label">{name}</div>
-      <div className="spacing-value">
+      <div className="dimension-label">{name}</div>
+      <div className="dimension-value">
         {getComputedStyle(document.documentElement).getPropertyValue(name)}
       </div>
     </div>
   );
 };
 
-export const Spacing = () => {
+export const dimension = () => {
   return (
     <div className={"theme-wrapper"}>
-      <h3>Spacing Tokens</h3>
+      <h3>dimension Tokens</h3>
       <div className="swatch-grid">
-        {spacingTokens.map((token) => (
-          <SpacingSwatch key={token} name={token} />
+        {dimensionTokens.map((token) => (
+          <dimensionSwatch key={token} name={token} />
         ))}
       </div>
     </div>

@@ -17,7 +17,7 @@
 .label {
   font: var(--font-label);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-dimension: 0.05em;
 }
 
 .code {
