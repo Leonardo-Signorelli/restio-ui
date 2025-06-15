@@ -13,6 +13,7 @@ export const Icon: React.FC<IconProps> = React.memo(({ icon }) => {
         role="application"
         width={"1rem"}
         height={"1rem"}
+        tabIndex={0}
       />
     </>
   );
