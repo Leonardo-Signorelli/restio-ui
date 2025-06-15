@@ -1,3 +1,5 @@
+import { RefObject } from "react";
+
 export interface InputProps {
     /**
      * Value of the input field
@@ -37,4 +39,6 @@ export interface InputProps {
     label?: string
 
     helperText?: string;
+
+    ref?: RefObject<HTMLInputElement | null>;
 }

@@ -20,7 +20,7 @@ export const Default: Story = {
   },
   args: {
     value: "Default input",
-    leadingIcon: "search",
+    leadingIcon: "check",
     trailingIcon: "close",
   },
 };
@@ -33,7 +33,7 @@ export const FullInput: Story = {
   },
   args: {
     value: "Default input",
-    leadingIcon: "search",
+    leadingIcon: "check",
     trailingIcon: "close",
     helperText: "Helper text down here",
     label: "Label",
