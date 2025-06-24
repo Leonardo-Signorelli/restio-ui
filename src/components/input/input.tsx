@@ -14,6 +14,7 @@ export const Input: React.FC<InputProps> = ({
   trailingIcon,
   placeholder,
   ariaLabel,
+  ref,
 }) => {
   const inputId = useId();
   const helperId = `${inputId}-helper`;
@@ -35,7 +36,7 @@ export const Input: React.FC<InputProps> = ({
   };
 
   return (
-    <span className={inputClass.fieldWrapper}>
+    <div className={inputClass.fieldWrapper}>
       {label && <label htmlFor={inputId}>{label}</label>}
 
       <span className={inputClass.inputWrapper} style={inputStyle}>
@@ -49,6 +50,7 @@ export const Input: React.FC<InputProps> = ({
           onKeyDown={onKeyDown}
           aria-label={ariaLabel}
           aria-describedby={helperText ? helperId : undefined}
+          ref={ref}
         />
         {trailingIcon && <Icon icon={trailingIcon} />}
       </span>
@@ -58,6 +60,6 @@ export const Input: React.FC<InputProps> = ({
           {helperText}
         </span>
       )}
-    </span>
+    </div>
   );
 };

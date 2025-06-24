@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ListProps } from "./list-types";
 import { Input } from "../input/input";
 import { useVirtualListScroll } from "../../hooks/useVirtualListScroll";
@@ -15,11 +15,16 @@ export const List: React.FC<ListProps> = ({
   onClick,
   onKeyDown,
 }) => {
+  const inputRef = useRef<HTMLInputElement>(null);
   const [filterValue, setFilterValue] = useState<string>("");
   const listItemHeight: number = 24;
   const [localSelectedIndex, setLocalSelectedIndex] = useState<number>(
     selectedIndex !== null ? selectedIndex : -1
   );
+
+  useEffect(() => {
+    inputRef.current?.focus(); // Focus on mount
+  }, []);
 
   // Filter the options based on filter value
   const filteredOptions = filterValue
@@ -128,6 +133,7 @@ export const List: React.FC<ListProps> = ({
           placeholder="Search..."
           onChange={onListTextfieldChange}
           onKeyDown={handleFilterKeyDown}
+          ref={inputRef}
         />
       </div>
 

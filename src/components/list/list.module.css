@@ -11,7 +11,7 @@
   left: anchor(left); /* allineato a sinistra */
   width: anchor-size(width); /* match width */
   border-radius: var(--radius-md);
-  background-color: var(--bgColor-default);
+  background-color: var(--bgColor-overlay);
   border: 1px solid var(--border-default);
   box-shadow: var(--elevation-2);
 }
@@ -57,4 +57,9 @@
 
 .rst-list-listItem[aria-selected="true"] {
   outline: 2px solid var(--interactive-default);
+}
+
+.rst-list-noElements {
+  font: var(--font-body);
+  padding: 0 var(--space-medium);
 }
