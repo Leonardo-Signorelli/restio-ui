@@ -1,7 +1,7 @@
 .theme-wrapper {
   padding: 2rem;
-  background-color: var(--bg-default);
-  color: var(--text-on-bg);
+  background-color: var(--rst-bg-default);
+  color: var(--rst-text-on-bg);
   transition: background-color 0.3s ease;
   min-height: 100vh;
 }
@@ -17,7 +17,7 @@
 .color-box {
   width: 80px;
   height: 80px;
-  border: 1px solid var(--border-muted);
+  border: 1px solid var(--rst-border-muted);
   border-radius: 8px;
   margin-bottom: 0.5rem;
 }

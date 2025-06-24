@@ -16,14 +16,14 @@
 .motion-value {
   font-family: monospace;
   font-size: 0.85rem;
-  color: var(--text-muted);
+  color: var(--rst-text-muted);
   margin-bottom: 1rem;
 }
 
 .motion-box {
   width: 40px;
   height: 40px;
-  background-color: var(--solid-primary);
+  background-color: var(--rst-solid-primary);
   border-radius: 4px;
   animation-name: move;
   animation-iteration-count: infinite;

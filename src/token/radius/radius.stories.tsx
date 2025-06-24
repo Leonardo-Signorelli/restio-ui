@@ -5,10 +5,10 @@ export default {
 };
 
 const radiusTokens = [
-  "--radius-sm",
-  "--radius-md",
-  "--radius-lg",
-  "--radius-full",
+  "--rst-radius-sm",
+  "--rst-radius-md",
+  "--rst-radius-lg",
+  "--rst-radius-full",
 ];
 
 const RadiusSwatch = ({ name }: { readonly name: string }) => (

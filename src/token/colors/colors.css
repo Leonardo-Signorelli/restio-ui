@@ -9,49 +9,48 @@
 :root {
   /* BACKGROUNDS */
 
-  --bgColor-0: var(--gray-0);
-  --bgColor-overlay: var(--gray-0);
-  --bgColor-default: var(--gray-100);
-  --bgColor-default-hover: var(--gray-110);
-  --bgColor-default-focus: var(--gray-120);
-  --bgColor-default-active: var(--gray-130);
-  --bgColor-default-disabled: var(--gray-200);
-  --bgColor-primary: var(--primary-600);
-  --bgColor-primary-hover: var(--primary-610);
-  --bgColor-primary-focus: var(--primary-620);
-  --bgColor-primary-active: var(--primary-630);
-  --bgColor-danger-hover: var(--red-700);
-  --bgColor-danger-active: var(--red-800);
+  --rst-bgColor-0: var(--rst-gray-0);
+  --rst-bgColor-overlay: var(--rst-gray-0);
+  --rst-bgColor-default: var(--rst-gray-100);
+  --rst-bgColor-default-hover: var(--rst-gray-110);
+  --rst-bgColor-default-focus: var(--rst-gray-120);
+  --rst-bgColor-default-active: var(--rst-gray-130);
+  --rst-bgColor-default-disabled: var(--rst-gray-200);
+  --rst-bgColor-primary: var(--rst-primary-600);
+  --rst-bgColor-primary-hover: var(--rst-primary-610);
+  --rst-bgColor-primary-focus: var(--rst-primary-620);
+  --rst-bgColor-primary-active: var(--rst-primary-630);
+  --rst-bgColor-danger-hover: var(--rst-red-700);
+  --rst-bgColor-danger-active: var(--rst-red-800);
 
   /* INTERACTIVE COMPONENTS */
-  --interactive-default: var(--primary-500);
-  --interactive-hover: var(--primary-600);
-  --interactive-active: var(--primary-700);
-  --interactive-disabled: var(--gray-300);
+  --rst-interactive-default: var(--rst-primary-500);
+  --rst-interactive-hover: var(--rst-primary-600);
+  --rst-interactive-active: var(--rst-primary-700);
+  --rst-interactive-disabled: var(--rst-gray-300);
 
   /* SOLID COLORS */
-  --solid-neutral: var(--gray-500);
-  --solid-primary: var(--primary-500);
-  --solid-positive: var(--green-600);
-  --solid-warning: var(--yellow-800);
-  --solid-danger: var(--red-700);
+  --rst-solid-neutral: var(--rst-gray-500);
+  --rst-solid-primary: var(--rst-primary-500);
+  --rst-solid-positive: var(--rst-green-600);
+  --rst-solid-warning: var(--rst-yellow-800);
+  --rst-solid-danger: var(--rst-red-700);
 
   /* ACCESSIBLE TEXT */
-  --text-primary: var(--gray-900);
-  --text-secondary: var(--gray-700);
-  --text-on-primary: var(--gray-0);
-  --text-on-danger: var(--gray-0);
-  --text-disabled: var(--gray-500);
-  --text-danger: var(--red-700);
+  --rst-text-primary: var(--rst-gray-900);
+  --rst-text-secondary: var(--rst-gray-700);
+  --rst-text-on-primary: var(--rst-gray-0);
+  --rst-text-on-danger: var(--rst-gray-0);
+  --rst-text-disabled: var(--rst-gray-500);
+  --rst-text-danger: var(--rst-red-700);
 }
 
 /* OVERLAYS & SHADOWS */
 :root {
-  --overlay-low: oklch(0 0 0 / 0.03);
-  --overlay-mid: oklch(0 0 0 / 0.08);
-  --overlay-high: oklch(0 0 0 / 0.16);
-
-  --shadow-soft: oklch(0 0 0 / 0.06);
-  --shadow-medium: oklch(0 0 0 / 0.12);
-  --shadow-hard: oklch(0 0 0 / 0.18);
+  --rst-overlay-low: oklch(0 0 0 / 3%);
+  --rst-overlay-mid: oklch(0 0 0 / 0.08);
+  --rst-overlay-high: oklch(0 0 0 / 0.16);
+  --rst-shadow-soft: oklch(0 0 0 / 0.06);
+  --rst-shadow-medium: oklch(0 0 0 / 0.12);
+  --rst-shadow-hard: oklch(0 0 0 / 0.18);
 }

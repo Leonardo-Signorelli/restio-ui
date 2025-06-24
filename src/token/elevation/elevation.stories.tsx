@@ -6,10 +6,10 @@ export default {
 };
 
 const elevationTokens = [
-  "--elevation-1",
-  "--elevation-2",
-  "--elevation-3",
-  "--elevation-4",
+  "--rst-elevation-1",
+  "--rst-elevation-2",
+  "--rst-elevation-3",
+  "--rst-elevation-4",
 ];
 
 const ElevationSwatch = ({ name }: { readonly name: string }) => (
@@ -21,7 +21,7 @@ const ElevationSwatch = ({ name }: { readonly name: string }) => (
         height: "64px",
         backgroundColor: "var(--white)",
         boxShadow: `var(${name})`,
-        borderRadius: "var(--radius-md)",
+        borderRadius: "var(--rst-radius-md)",
       }}
     />
     <div className="elevation-label">{name}</div>

@@ -2,13 +2,12 @@
  * Design System — Sizing tokens
  */
 
-@import "../primitives.css";
+@import url("../primitives.css");
 
 :root {
-  /* */
-  --space-zero: var(--dimension-0);
-  --space-xsmall: var(--dimension-1);
-  --space-small: var(--dimension-2);
-  --space-medium: var(--dimension-3);
-  --space-large: var(--dimension-4);
+  --rst-space-zero: var(--rst-dimension-0);
+  --rst-space-xsmall: var(--rst-dimension-1);
+  --rst-space-small: var(--rst-dimension-2);
+  --rst-space-medium: var(--rst-dimension-3);
+  --rst-space-large: var(--rst-dimension-4);
 }

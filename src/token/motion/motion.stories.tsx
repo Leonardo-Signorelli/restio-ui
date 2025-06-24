@@ -5,16 +5,16 @@ export default {
 };
 
 const motionTokens = [
-  "--ease-in-out",
-  "--ease-out",
-  "--ease-in",
-  "--duration-fast",
-  "--duration-base",
-  "--duration-slow",
+  "--rst-ease-in-out",
+  "--rst-ease-out",
+  "--rst-ease-in",
+  "--rst-duration-fast",
+  "--rst-duration-base",
+  "--rst-duration-slow",
 ];
 
-const isEasing = (name: string) => name.startsWith("--ease");
-const isDuration = (name: string) => name.startsWith("--duration");
+const isEasing = (name: string) => name.startsWith("--rst-ease");
+const isDuration = (name: string) => name.startsWith("--rst-duration");
 
 const MotionSwatch = ({ name }: { readonly name: string }) => {
   const value = getComputedStyle(document.documentElement)
