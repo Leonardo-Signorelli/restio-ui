@@ -1,6 +1,6 @@
 .dimension-box {
   background-color: var(--primary-500);
-  border-radius: var(--radius-sm);
+  border-radius: var(--rst-radius-sm);
   margin-bottom: 0.5rem;
 }
 

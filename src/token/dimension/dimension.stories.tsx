@@ -5,15 +5,15 @@ export default {
 };
 
 const dimensionTokens = [
-  "--space-0",
-  "--space-1",
-  "--space-2",
-  "--space-3",
-  "--space-4",
-  "--space-5",
-  "--space-6",
-  "--space-8",
-  "--space-10",
+  "--rst-space-0",
+  "--rst-space-1",
+  "--rst-space-2",
+  "--rst-space-3",
+  "--rst-space-4",
+  "--rst-space-5",
+  "--rst-space-6",
+  "--rst-space-8",
+  "--rst-space-10",
 ];
 
 const dimensionSwatch = ({ name }: { readonly name: string }) => {

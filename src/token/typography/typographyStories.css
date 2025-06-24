@@ -3,25 +3,25 @@
 }
 
 .display {
-  font: var(--font-display);
+  font: var(--rst-font-display);
 }
 
 .heading {
-  font: var(--font-heading);
+  font: var(--rst-font-heading);
 }
 
 .body {
-  font: var(--font-body);
+  font: var(--rst-font-body);
 }
 
 .label {
-  font: var(--font-label);
+  font: var(--rst-font-label);
   text-transform: uppercase;
   letter-dimension: 0.05em;
 }
 
 .code {
-  font: var(--font-code);
+  font: var(--rst-font-code);
   background-color: #f4f4f4;
   padding: 0.25rem 0.5rem;
   border-radius: 4px;

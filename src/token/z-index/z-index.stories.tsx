@@ -6,12 +6,12 @@ export default {
 };
 
 const zIndexTokens = [
-  "--z-base",
-  "--z-dropdown",
-  "--z-sticky",
-  "--z-overlay",
-  "--z-tooltip",
-  "--z-modal",
+  "--rst-z-base",
+  "--rst-z-dropdown",
+  "--rst-z-sticky",
+  "--rst-z-overlay",
+  "--rst-z-tooltip",
+  "--rst-z-modal",
 ];
 
 const ZIndexSwatch = ({ name }: { readonly name: string }) => {

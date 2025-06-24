@@ -18,22 +18,23 @@
  * └──────────────┴───────────────┴────────────────┴
  */
 
-@import "../primitives.css";
+@import url("../primitives.css");
 
 :root {
   /* Font tokens composed from primitives */
-  --font-display: var(--font-style-normal) var(--font-weight-bold)
-    var(--font-size-xl) / var(--line-height-lg) var(--font-family-sans);
-
-  --font-heading: var(--font-style-normal) var(--font-weight-bold)
-    var(--font-size-md) / var(--line-height-md) var(--font-family-sans);
-
-  --font-body: var(--font-style-normal) var(--font-weight-regular)
-    var(--font-size-sm) / var(--line-height-md) var(--font-family-sans);
-
-  --font-label: var(--font-style-normal) var(--font-weight-medium)
-    var(--font-size-xs) / var(--line-height-sm) var(--font-family-sans);
-
-  --font-code: var(--font-style-normal) var(--font-weight-regular)
-    var(--font-size-xs) / var(--line-height-sm) var(--font-family-mono);
+  --rst-font-display: var(--rst-font-style-normal) var(--rst-font-weight-bold)
+    var(--rst-font-size-xl) / var(--rst-line-height-lg)
+    var(--rst-font-family-sans);
+  --rst-font-heading: var(--rst-font-style-normal) var(--rst-font-weight-bold)
+    var(--rst-font-size-md) / var(--rst-line-height-md)
+    var(--rst-font-family-sans);
+  --rst-font-body: var(--rst-font-style-normal) var(--rst-font-weight-regular)
+    var(--rst-font-size-sm) / var(--rst-line-height-md)
+    var(--rst-font-family-sans);
+  --rst-font-label: var(--rst-font-style-normal) var(--rst-font-weight-medium)
+    var(--rst-font-size-xs) / var(--rst-line-height-sm)
+    var(--rst-font-family-sans);
+  --rst-font-code: var(--rst-font-style-normal) var(--rst-font-weight-regular)
+    var(--rst-font-size-xs) / var(--rst-line-height-sm)
+    var(--rst-font-family-mono);
 }
