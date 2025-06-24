@@ -1,8 +1,8 @@
 import React, { useState, useId } from "react";
 import { List } from "../list/list";
-import { SelectProps } from "./multi-select-types";
 import { Option } from "../../types/global-types";
 import { Button } from "../button/button";
+import { SelectProps } from "../select/select-types";
 
 export const Select: React.FC<SelectProps> = ({
   value,
@@ -18,7 +18,9 @@ export const Select: React.FC<SelectProps> = ({
 
   const selectOption = (option: Option) => {
     onChange?.(option.value);
-    const index = options.findIndex((o) => o.value === option.value);
+    const index = options.findIndex(
+      (o: { value: string }) => o.value === option.value
+    );
     setSelectedIndex(index);
     setActiveIndex([option.value]);
     setIsOpen(false);
