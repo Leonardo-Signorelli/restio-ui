@@ -14,6 +14,8 @@ export const ContributionHeatmap: React.FC<ContributionHeatmapProps> = ({
     return Math.max(...data.flat().map((cell) => cell.count));
   }, [data]);
 
+  console.log(data);
+
   const contributionHeatmapClass = {
     grid: styles["rst-grid"],
     column: styles["rst-column"],

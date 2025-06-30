@@ -5,8 +5,15 @@ export type ContributionCell = {
 
 export type ContributionMatrix = ContributionCell[][]; // datatable
 
+export type Period = 'month' | 'quarter' | 'year';
+
+
+export type ContributionData = ContributionCell[][];
+
 export interface ContributionHeatmapProps {
-  data: ContributionMatrix;
-  bands: number; // bands number
-  color: string; // principal color ( okchl )
+  data: ContributionData;
+  bands: number;
+  color: string;
+  period?: Period;
+  startDate?: string;
 }

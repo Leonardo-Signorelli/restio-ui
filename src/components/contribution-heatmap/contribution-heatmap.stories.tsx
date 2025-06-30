@@ -19,6 +19,7 @@ const meta: Meta<ContributionHeatmapProps> = {
     bands: { control: { type: "number", min: 1, max: 10 } },
     color: { control: "text" },
     data: { control: false },
+    period: { control: "select", options: ["month", "quarter", "year"] },
   },
 };
 
