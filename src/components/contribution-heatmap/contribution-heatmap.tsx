@@ -3,18 +3,22 @@
 import React from "react";
 import styles from "./contribution-heatmap.module.css";
 import { ContributionHeatmapProps } from "./contribution-heatmap-types";
-import { getShade } from "./contribution-heatmap-utils";
+import { generateHeatmapData, getShade } from "./contribution-heatmap-utils";
 
 export const ContributionHeatmap: React.FC<ContributionHeatmapProps> = ({
   data,
   bands,
   color,
+  period,
+  startDate,
 }) => {
-  const maxCount = React.useMemo(() => {
-    return Math.max(...data.flat().map((cell) => cell.count));
-  }, [data]);
+  const heatmapData = React.useMemo(() => {
+    return data ?? generateHeatmapData(period, startDate);
+  }, [data, period, startDate]);
 
-  console.log(data);
+  const maxCount = React.useMemo(() => {
+    return Math.max(...heatmapData.flat().map((cell) => cell.count));
+  }, [heatmapData]);
 
   const contributionHeatmapClass = {
     grid: styles["rst-grid"],
@@ -27,7 +31,7 @@ export const ContributionHeatmap: React.FC<ContributionHeatmapProps> = ({
       className={`${contributionHeatmapClass.grid}`}
       style={{ gridTemplateColumns: `repeat(${data.length}, auto)` }}
     >
-      {data.map((column, colIdx) => (
+      {heatmapData.map((column, colIdx) => (
         <div key={colIdx} className={contributionHeatmapClass.column}>
           {column.map((cell, rowIdx) => {
             const bgColor = getShade(cell.count, maxCount, bands, color);

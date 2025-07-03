@@ -49,3 +49,13 @@ export const DifferentColor: Story = {
     color: "oklch(60% 0.2 260)", // viola
   },
 };
+
+export const Periods: Story = {
+  args: {
+    data: exampleData,
+    bands: 6,
+    color: "oklch(62% 0.18 132)",
+    period: "year",
+    startDate: "today",
+  },
+};
