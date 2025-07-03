@@ -1,4 +1,4 @@
-import{j as o}from"./jsx-runtime-D_zvdyIk.js";import{useMDXComponents as t}from"./index-kPEQ8KLa.js";import"./iframe-DFerBulm.js";function r(e){const n={h1:"h1",h2:"h2",p:"p",...t(),...e.components};return o.jsxs(o.Fragment,{children:[o.jsx(n.h1,{id:"colors",children:"Colors"}),`
+import{j as o}from"./jsx-runtime-D_zvdyIk.js";import{useMDXComponents as t}from"./index-RJ0OQE2z.js";import"./iframe-BIhWZDqy.js";function r(e){const n={h1:"h1",h2:"h2",p:"p",...t(),...e.components};return o.jsxs(o.Fragment,{children:[o.jsx(n.h1,{id:"colors",children:"Colors"}),`
 `,o.jsx(n.p,{children:`button ( bg-color-base )
 input ( autocomplete etc.. )
 checkbox`}),`
