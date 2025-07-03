@@ -19,6 +19,7 @@ const meta: Meta<ContributionHeatmapProps> = {
     bands: { control: { type: "number", min: 1, max: 10 } },
     color: { control: "text" },
     data: { control: false },
+    period: { control: "select", options: ["month", "quarter", "year"] },
   },
 };
 
@@ -46,5 +47,15 @@ export const DifferentColor: Story = {
     data: exampleData,
     bands: 4,
     color: "oklch(60% 0.2 260)", // viola
+  },
+};
+
+export const Periods: Story = {
+  args: {
+    data: exampleData,
+    bands: 6,
+    color: "oklch(62% 0.18 132)",
+    period: "year",
+    startDate: "today",
   },
 };
