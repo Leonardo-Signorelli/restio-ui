@@ -42,6 +42,11 @@ jobs:
           folder: storybook-static
           token: ${{ secrets.GH_TOKEN }}
 
+      - name: Verify NPM Authentication
+        run: npm whoami
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
       - name: Publish restio-ui
         run: npm publish --access public
         env:
