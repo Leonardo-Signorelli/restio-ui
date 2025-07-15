@@ -63,6 +63,7 @@
     "vitest": "^3.2.4"
   },
   "overrides": {
-    "storybook": "$storybook"
+    "storybook": "$storybook",
+    "rollup": "4.44.0"
   }
 }
