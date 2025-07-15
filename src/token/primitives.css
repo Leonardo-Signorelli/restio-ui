@@ -5,49 +5,49 @@
   /* ===================== */
 
   /* Gray scale */
-  --rst-gray-0: oklch(1% 0 0deg); /* Overalay, bg0 */
-  --rst-gray-100: oklch(0.98 0 0); /* bgDefault */
-  --rst-gray-110: oklch(0.95 0 0); /* bg-default-hover */
-  --rst-gray-120: oklch(0.93 0 0); /* bg-default-selected/active */
-  --rst-gray-130: oklch(0.91 0 0); /* bg-default-focus */
+  --rst-gray-0: oklch(100% 0 0deg); /* Overalay, bg0 */
+  --rst-gray-100: oklch(98% 0 0deg); /* bgDefault */
+  --rst-gray-110: oklch(95% 0 0deg); /* bg-default-hover */
+  --rst-gray-120: oklch(93% 0 0deg); /* bg-default-selected/active */
+  --rst-gray-130: oklch(91% 0 0deg); /* bg-default-focus */
   /* Block */
-  --rst-gray-200: oklch(0.85 0 0);
-  --rst-gray-300: oklch(0.8 0 0);
-  --rst-gray-400: oklch(0.65 0 0);
-  --rst-gray-500: oklch(0.5 0 0);
-  --rst-gray-600: oklch(0.35 0 0);
-  --rst-gray-700: oklch(0.3 0 0);
-  --rst-gray-800: oklch(0.25 0 0);
-  --rst-gray-900: oklch(0.2 0 0);
+  --rst-gray-200: oklch(85% 0 0deg);
+  --rst-gray-300: oklch(80% 0 0deg);
+  --rst-gray-400: oklch(65% 0 0deg);
+  --rst-gray-500: oklch(50% 0 0deg);
+  --rst-gray-600: oklch(35% 0 0deg);
+  --rst-gray-700: oklch(30% 0 0deg);
+  --rst-gray-800: oklch(25% 0 0deg);
+  --rst-gray-900: oklch(20% 0 0deg);
 
   /* Primary purple-ish tones */
-  --rst-primary-200: oklch(0.9 0.05 270);
-  --rst-primary-500: oklch(0.6 0.13 270);
-  --rst-primary-600: oklch(0.5 0.16 270);
-  --rst-primary-610: oklch(0.48 0.16 270);
-  --rst-primary-620: oklch(0.45 0.16 270);
-  --rst-primary-630: oklch(0.42 0.16 270);
+  --rst-primary-200: oklch(90% 0.05 270deg);
+  --rst-primary-500: oklch(60% 0.13 270deg);
+  --rst-primary-600: oklch(50% 0.16 270deg);
+  --rst-primary-610: oklch(48% 0.16 270deg);
+  --rst-primary-620: oklch(45% 0.16 270deg);
+  --rst-primary-630: oklch(42% 0.16 270deg);
   /* Block */
-  --rst-primary-700: oklch(0.4 0.18 270);
-  --rst-primary-600-dark: oklch(0.65 0.16 270);
-  --rst-primary-hover-dark: oklch(0.75 0.18 270);
-  --rst-primary-active-dark: oklch(0.85 0.2 270);
+  --rst-primary-700: oklch(40% 0.18 270deg);
+  --rst-primary-600-dark: oklch(65% 0.16 270deg);
+  --rst-primary-hover-dark: oklch(75% 0.18 270deg);
+  --rst-primary-active-dark: oklch(85% 0.2 270deg);
 
   /* Green tones */
-  --rst-green-600: oklch(0.6 0.12 150);
-  --rst-green-700-dark: oklch(0.75 0.16 150);
+  --rst-green-600: oklch(60% 0.12 150deg);
+  --rst-green-700-dark: oklch(75% 0.16 150deg);
 
   /* Yellow tones */
-  --rst-yellow-800: oklch(0.85 0.14 90);
+  --rst-yellow-800: oklch(85% 0.14 90deg);
 
   /* Red tones */
-  --rst-red-700: oklch(0.65 0.18 30);
-  --rst-red-800: oklch(0.55 0.18 30);
-  --rst-red-800-dark: oklch(0.75 0.18 30);
+  --rst-red-700: oklch(65% 0.18 30deg);
+  --rst-red-800: oklch(55% 0.18 30deg);
+  --rst-red-800-dark: oklch(75% 0.18 30deg);
 
   /* Whites and blacks */
-  --rst-white: oklch(0.98 0 0);
-  --rst-black: oklch(0.1 0 0);
+  --rst-white: oklch(100% 0 0deg);
+  --rst-black: oklch(10% 0 0deg);
 
   /* ===================== */
   /* DIMENSION TOKENS */
@@ -80,10 +80,10 @@
   /* ===================== */
   /* Depth layering with shadows, using transparent OKLCH black */
 
-  --rst-elevation-1: 0 1px 2px oklch(0 0 0 / 0.04); /* Low elevation, flat elements */
-  --rst-elevation-2: 0 2px 4px oklch(0 0 0 / 0.08); /* Cards and panels */
-  --rst-elevation-3: 0 4px 8px oklch(0 0 0 / 0.12); /* Modals and dialogs */
-  --rst-elevation-4: 0 6px 12px oklch(0 0 0 / 0.16); /* Tooltips and menus */
+  --rst-elevation-1: 0 1px 2px oklch(0% 0 0deg / 4%); /* Low elevation, flat elements */
+  --rst-elevation-2: 0 2px 4px oklch(0% 0 0deg / 8%); /* Cards and panels */
+  --rst-elevation-3: 0 4px 8px oklch(0% 0 0deg / 12%); /* Modals and dialogs */
+  --rst-elevation-4: 0 6px 12px oklch(0% 0 0deg / 16%); /* Tooltips and menus */
 
   /* ===================== */
   /* MOTION TOKENS */
@@ -117,8 +117,7 @@
   /* Font families and scalable sizes with consistent line heights */
 
   --rst-font-family-sans: "Inter", sans-serif; /* Primary UI font */
-  --rst-font-family-mono:
-    "Fira Code", monospace; /* For code and fixed-width text */
+  --rst-font-family-mono: "Fira Code", monospace; /* For code and fixed-width text */
 
   --rst-font-size-xs: 0.75rem; /* 12px - captions and small text */
   --rst-font-size-sm: 0.875rem; /* 14px - base body text */
@@ -149,8 +148,8 @@
 
 /* BLACK MODE -- To build */
 :root [data-theme="dark"] {
-  --rst-gray-100: oklch(0.2 0 0); /* bg-default-hover (dark) */
-  --rst-gray-110: oklch(0.23 0 0); /* bg-default-hover (dark) */
-  --rst-gray-120: oklch(0.26 0 0); /* bg-default-focus (dark) */
-  --rst-gray-130: oklch(0.3 0 0); /* bg-default-selected/active (dark) */
+  --rst-gray-100: oklch(20% 0 0deg); /* bg-default-hover (dark) */
+  --rst-gray-110: oklch(23% 0 0deg); /* bg-default-hover (dark) */
+  --rst-gray-120: oklch(26% 0 0deg); /* bg-default-focus (dark) */
+  --rst-gray-130: oklch(30% 0 0deg); /* bg-default-selected/active (dark) */
 }
