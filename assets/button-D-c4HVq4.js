@@ -1,2 +1,0 @@
-import{j as t}from"./jsx-runtime-D_zvdyIk.js";import{useMDXComponents as r}from"./index-lGiZ1441.js";import"./iframe-BSBCLB1l.js";function e(n){const o={h1:"h1",p:"p",...r(),...n.components};return t.jsxs(t.Fragment,{children:[t.jsx(o.h1,{id:"button",children:"Button"}),`
-`,t.jsx(o.p,{children:"Button color"})]})}function m(n={}){const{wrapper:o}={...r(),...n.components};return o?t.jsx(o,{...n,children:t.jsx(e,{...n})}):e(n)}export{m as default};
