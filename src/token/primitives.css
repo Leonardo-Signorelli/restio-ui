@@ -5,7 +5,7 @@
   /* ===================== */
 
   /* Gray scale */
-  --rst-gray-0: oklch(1% 0 0deg); /* Overalay, bg0 */
+  --rst-gray-0: oklch(100% 0 0deg); /* Overalay, bg0 */
   --rst-gray-100: oklch(0.98 0 0); /* bgDefault */
   --rst-gray-110: oklch(0.95 0 0); /* bg-default-hover */
   --rst-gray-120: oklch(0.93 0 0); /* bg-default-selected/active */

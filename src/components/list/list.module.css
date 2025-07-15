@@ -1,12 +1,9 @@
 .rst-list {
   position: absolute;
-  top: 0;
-  left: 0;
   max-width: 450px;
   min-width: 150px;
   position: anchor;
   position-anchor: --input-anchor;
-
   top: calc(anchor(bottom) + 2px);
   left: anchor(left); /* allineato a sinistra */
   width: anchor-size(width); /* match width */
