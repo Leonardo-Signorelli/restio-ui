@@ -42,6 +42,11 @@ jobs:
           folder: storybook-static
           token: ${{ secrets.GH_TOKEN }}
 
+      - name: Set up .npmrc for authentication
+        run: echo "//registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}" > ~/.npmrc
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
       - name: Verify NPM Authentication
         run: npm whoami
         env:
