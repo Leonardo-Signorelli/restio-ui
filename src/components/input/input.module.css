@@ -1,0 +1,45 @@
+.rst-inputField-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--rst-space-small);
+}
+
+.rst-input-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--rst-space-small);
+  border: var(--rst-border-width-default) solid var(--rst-border-default);
+  border-radius: var(--rst-radius-md);
+  background-color: transparent;
+  padding: var(--rst-space-small);
+  font: var(--rst-font-body);
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.rst-input-wrapper:focus-within {
+  outline: 1px solid var(--rst-border-primary);
+  outline-offset: -1px;
+}
+
+.rst-input {
+  width: 100%;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  font: inherit;
+  color: var(--rst-text-on-bg);
+  cursor: inherit;
+}
+
+.rst-input:disabled {
+  color: var(--rst-text-disabled);
+  cursor: not-allowed;
+  background-color: var(--rst-bg-muted);
+}
+
+.rst-input::placeholder {
+  color: var(--rst-text-disabled);
+}

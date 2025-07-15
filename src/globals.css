@@ -1,0 +1,9 @@
+/**
+* This file is where you can import global styles and CSS Variables.
+*/
+
+@import "./token/colors/colors.css";
+@import "./token/typography/typography.css";
+@import "./token/primitives.css";
+@import "./token/dimension/dimension.css";
+@import "./token/borders/borders.css";

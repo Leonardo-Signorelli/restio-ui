@@ -1,0 +1,40 @@
+/**
+ * Design System — Typography Tokens
+ * Includes headings, body text
+ */
+
+/**
+ * Design System — Typography Tokens
+ *
+ * ┌──────────────┬───────────────┬────────────────┬
+ * │ Property     │ Example Value │ Required?      │
+ * ├──────────────┼───────────────┼────────────────┼
+ * │ font-style   │ normal        │ optional       │
+ * │ font-variant │ normal        │ optional       │
+ * │ font-weight  │ 700           │ optional       │
+ * │ font-size    │ 16px          │ mandatory      │
+ * │ line-height  │ 1.2           │ optional       │
+ * │ font-family  │ sans-serif    │ mandatory      │
+ * └──────────────┴───────────────┴────────────────┴
+ */
+
+@import url("../primitives.css");
+
+:root {
+  /* Font tokens composed from primitives */
+  --rst-font-display: var(--rst-font-style-normal) var(--rst-font-weight-bold)
+    var(--rst-font-size-xl) / var(--rst-line-height-lg)
+    var(--rst-font-family-sans);
+  --rst-font-heading: var(--rst-font-style-normal) var(--rst-font-weight-bold)
+    var(--rst-font-size-md) / var(--rst-line-height-md)
+    var(--rst-font-family-sans);
+  --rst-font-body: var(--rst-font-style-normal) var(--rst-font-weight-regular)
+    var(--rst-font-size-sm) / var(--rst-line-height-md)
+    var(--rst-font-family-sans);
+  --rst-font-label: var(--rst-font-style-normal) var(--rst-font-weight-medium)
+    var(--rst-font-size-xs) / var(--rst-line-height-sm)
+    var(--rst-font-family-sans);
+  --rst-font-code: var(--rst-font-style-normal) var(--rst-font-weight-regular)
+    var(--rst-font-size-xs) / var(--rst-line-height-sm)
+    var(--rst-font-family-mono);
+}

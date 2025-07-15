@@ -1,0 +1,156 @@
+/* stylelint-disable comment-empty-line-before */
+:root {
+  /* ===================== */
+  /* COLOR TOKENS */
+  /* ===================== */
+
+  /* Gray scale */
+  --rst-gray-0: oklch(1% 0 0deg); /* Overalay, bg0 */
+  --rst-gray-100: oklch(0.98 0 0); /* bgDefault */
+  --rst-gray-110: oklch(0.95 0 0); /* bg-default-hover */
+  --rst-gray-120: oklch(0.93 0 0); /* bg-default-selected/active */
+  --rst-gray-130: oklch(0.91 0 0); /* bg-default-focus */
+  /* Block */
+  --rst-gray-200: oklch(0.85 0 0);
+  --rst-gray-300: oklch(0.8 0 0);
+  --rst-gray-400: oklch(0.65 0 0);
+  --rst-gray-500: oklch(0.5 0 0);
+  --rst-gray-600: oklch(0.35 0 0);
+  --rst-gray-700: oklch(0.3 0 0);
+  --rst-gray-800: oklch(0.25 0 0);
+  --rst-gray-900: oklch(0.2 0 0);
+
+  /* Primary purple-ish tones */
+  --rst-primary-200: oklch(0.9 0.05 270);
+  --rst-primary-500: oklch(0.6 0.13 270);
+  --rst-primary-600: oklch(0.5 0.16 270);
+  --rst-primary-610: oklch(0.48 0.16 270);
+  --rst-primary-620: oklch(0.45 0.16 270);
+  --rst-primary-630: oklch(0.42 0.16 270);
+  /* Block */
+  --rst-primary-700: oklch(0.4 0.18 270);
+  --rst-primary-600-dark: oklch(0.65 0.16 270);
+  --rst-primary-hover-dark: oklch(0.75 0.18 270);
+  --rst-primary-active-dark: oklch(0.85 0.2 270);
+
+  /* Green tones */
+  --rst-green-600: oklch(0.6 0.12 150);
+  --rst-green-700-dark: oklch(0.75 0.16 150);
+
+  /* Yellow tones */
+  --rst-yellow-800: oklch(0.85 0.14 90);
+
+  /* Red tones */
+  --rst-red-700: oklch(0.65 0.18 30);
+  --rst-red-800: oklch(0.55 0.18 30);
+  --rst-red-800-dark: oklch(0.75 0.18 30);
+
+  /* Whites and blacks */
+  --rst-white: oklch(0.98 0 0);
+  --rst-black: oklch(0.1 0 0);
+
+  /* ===================== */
+  /* DIMENSION TOKENS */
+  /* ===================== */
+  /* Consistent dimension units for layout, margin, and padding */
+
+  --rst-dimension-0: 0px;
+  --rst-dimension-1: 2px; /* Extra small dimension */
+  --rst-dimension-2: 4px; /* Small dimension */
+  --rst-dimension-3: 8px;
+  --rst-dimension-4: 12px;
+  --rst-dimension-5: 16px; /* Default dimension between elements */
+  --rst-dimension-6: 20px;
+  --rst-dimension-7: 24px;
+  --rst-dimension-8: 32px; /* Large gaps and section padding */
+  --rst-dimension-9: 40px;
+
+  /* ===================== */
+  /* RADIUS TOKENS */
+  /* ===================== */
+  /* Border-radius sizes for consistent rounding of corners */
+
+  --rst-radius-sm: 2px; /* Subtle, tight curves */
+  --rst-radius-md: 4px; /* Default radius for buttons, cards */
+  --rst-radius-lg: 8px; /* For larger containers like modals */
+  --rst-radius-full: 9999px; /* Full rounding, for pills and avatars */
+
+  /* ===================== */
+  /* ELEVATION TOKENS (SHADOWS) */
+  /* ===================== */
+  /* Depth layering with shadows, using transparent OKLCH black */
+
+  --rst-elevation-1: 0 1px 2px oklch(0 0 0 / 0.04); /* Low elevation, flat elements */
+  --rst-elevation-2: 0 2px 4px oklch(0 0 0 / 0.08); /* Cards and panels */
+  --rst-elevation-3: 0 4px 8px oklch(0 0 0 / 0.12); /* Modals and dialogs */
+  --rst-elevation-4: 0 6px 12px oklch(0 0 0 / 0.16); /* Tooltips and menus */
+
+  /* ===================== */
+  /* MOTION TOKENS */
+  /* ===================== */
+  /* Timing and easing curves for transitions and animations */
+
+  --rst-ease-in-out: cubic-bezier(0.4, 0, 0.2, 1); /* Smooth, default easing */
+  --rst-ease-out: cubic-bezier(0, 0, 0.2, 1); /* Fast exit easing */
+  --rst-ease-in: cubic-bezier(0.4, 0, 1, 1); /* Fast entrance easing */
+  /* Block */
+  --rst-duration-fast: 150ms; /* Quick transitions (hover states) */
+  --rst-duration-base: 250ms; /* Default transition speed */
+  --rst-duration-slow: 400ms; /* Slower transitions (modals, emphasis) */
+
+  /* ===================== */
+  /* Z-INDEX TOKENS */
+  /* ===================== */
+  /* Layer stacking order for UI elements */
+
+  --rst-z-base: 0; /* Default layer */
+  --rst-z-dropdown: 100; /* Dropdown menus */
+  --rst-z-sticky: 200; /* Sticky headers/footers */
+  --rst-z-overlay: 500; /* Overlays and backdrops */
+  --rst-z-tooltip: 1000; /* Tooltips */
+  --rst-z-modal: 1100; /* Modals and dialogs */
+
+  /* ===================== */
+  /* TYPOGRAPHY TOKENS */
+  /* ===================== */
+  /* Typography Tokens
+  /* Font families and scalable sizes with consistent line heights */
+
+  --rst-font-family-sans: "Inter", sans-serif; /* Primary UI font */
+  --rst-font-family-mono:
+    "Fira Code", monospace; /* For code and fixed-width text */
+
+  --rst-font-size-xs: 0.75rem; /* 12px - captions and small text */
+  --rst-font-size-sm: 0.875rem; /* 14px - base body text */
+  --rst-font-size-md: 1rem; /* 16px - headings */
+  --rst-font-size-lg: 1.125rem; /* 18px - heading2 */
+  --rst-font-size-xl: 1.25rem; /* 20px - display */
+
+  /* Size */
+  --rst-size-small: 1.5rem;
+  --rst-size-medium: 1.75rem;
+  --rst-size-large: 2rem;
+
+  /* Line Height */
+  --rst-line-height-sm: 1.2; /* Tight line height (titles) */
+  --rst-line-height-md: 1.5; /* Default body */
+  --rst-line-height-lg: 1.75; /* Loose, for long-form text */
+
+  /* Font Height */
+  --rst-font-weight-light: 300; /* Default text weight */
+  --rst-font-weight-regular: 400; /* Default text weight */
+  --rst-font-weight-medium: 500; /* Emphasis */
+  --rst-font-weight-bold: 700; /* Strong emphasis and headings */
+
+  /* Font Style */
+  --rst-font-style-normal: normal; /* Normal font style */
+  --rst-font-style-italic: italic; /* Italic font style */
+}
+
+/* BLACK MODE -- To build */
+:root [data-theme="dark"] {
+  --rst-gray-100: oklch(0.2 0 0); /* bg-default-hover (dark) */
+  --rst-gray-110: oklch(0.23 0 0); /* bg-default-hover (dark) */
+  --rst-gray-120: oklch(0.26 0 0); /* bg-default-focus (dark) */
+  --rst-gray-130: oklch(0.3 0 0); /* bg-default-selected/active (dark) */
+}

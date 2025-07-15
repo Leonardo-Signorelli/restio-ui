@@ -1,0 +1,44 @@
+/* stylelint-disable comment-empty-line-before */
+:root {
+  /* ===================== */
+  /* BORDER COLOR TOKENS */
+  /* ===================== */
+
+  --rst-border-default: var(
+    --rst-gray-200
+  ); /* standard border (inputs, cards, containers) */
+  --rst-border-muted: var(
+    --rst-gray-200
+  ); /* for separators and subtle borders */
+  --rst-border-subtle: var(
+    --rst-gray-100
+  ); /* very subtle borders, table rows */
+  --rst-border-strong: var(
+    --rst-gray-400
+  ); /* stronger border, emphasis cases */
+
+  --rst-border-primary: var(--rst-primary-500); /* interactive elements */
+  --rst-border-primary-hover: var(--rst-primary-600); /* on hover/focus */
+  --rst-border-success: var(--rst-green-600);
+  --rst-border-warning: var(--rst-yellow-800);
+  --rst-border-danger: var(--rst-red-700);
+  --rst-border-focus: var(--rst-primary-500); /* same as primary for now */
+
+  /* ===================== */
+  /* BORDER WIDTH TOKENS */
+  /* ===================== */
+
+  --rst-border-width-thin: 0.5px;
+  --rst-border-width-default: 1px;
+  --rst-border-width-thick: 2px;
+
+  /* ===================== */
+  /* BORDER RADIUS (REUSED FROM EXISTING) */
+  /* ===================== */
+
+  /* Already defined: */
+  /* --rst-radius-sm */
+  /* --rst-radius-md */
+  /* --rst-radius-lg */
+  /* --rst-radius-full */
+}

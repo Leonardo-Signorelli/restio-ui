@@ -1,0 +1,119 @@
+/* Button.module.css */
+
+/* Base button styles */
+.button {
+  display: inline-flex;
+  gap: var(--rst-space-small);
+  align-items: center;
+  justify-content: center;
+  transition:
+    background-color 0.2s,
+    opacity 0.2s,
+    transform 0.2s;
+  cursor: pointer;
+  border-radius: var(--rst-radius-md);
+}
+
+/* SIZING DIMENSION */
+.button--small {
+  padding: var(--rst-space-xsmall) var(--rst-space-small);
+  font-size: var(--rst-font-size-xs);
+  height: var(--size-small);
+}
+
+.button--medium {
+  padding: var(--rst-space-small) var(--rst-space-medium);
+  font-size: var(--rst-font-size-sm);
+  height: var(--size-medium);
+}
+
+.button--large {
+  padding: var(--rst-space-medium) var(--rst-space-large);
+  font-size: var(--rst-font-size-sm);
+  height: var(--size-large);
+}
+
+/* VARIANT STYLE */
+.button--base,
+.button--invisible,
+.button--link {
+  background-color: transparent;
+  color: var(--rst-text-secondary);
+  border: 1px solid transparent;
+  &:hover {
+    background-color: var(--rst-bgColor-default-hover);
+  }
+
+  &:active {
+    background-color: var(--rst-bgColor-default-active);
+  }
+}
+
+.button--base {
+  border: 1px solid var(--rst-border-default);
+  background-color: var(--rst-bgColor-default);
+}
+
+.button--primary {
+  background-color: var(--rst-bgColor-primary);
+  color: var(--rst-text-on-primary);
+  border: 1px solid var(--rst-borderColor-primary);
+
+  &:hover {
+    background-color: var(--rst-bgColor-primary-hover);
+  }
+
+  &:active {
+    background-color: var(--rst-bgColor-primary-active);
+  }
+}
+
+.button--danger {
+  border: 1px solid var(--rst-border-default);
+  background-color: var(--rst-bgColor-default);
+  color: var(--rst-text-danger);
+  &:hover {
+    background-color: var(--rst-bgColor-danger-hover);
+    color: var(--rst-text-on-danger);
+  }
+
+  &:active {
+    background-color: var(--rst-bgColor-danger-active);
+  }
+}
+
+.button--link {
+  color: var(--rst-interactive-default);
+  text-decoration: underline;
+}
+
+/* Disabled & Loading states */
+.button--disabled {
+  background-color: var(--rst-bgColor-default-disabled);
+  color: var(--rst-text-disabled);
+  border: 1px solid var(--rst-border-default);
+  cursor: not-allowed;
+  opacity: 0.6;
+  &:hover,
+  &:active {
+    background-color: var(--rst-bgColor-default-disabled);
+  }
+}
+
+.button--loading {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.button__leading-visual,
+.button__trailing-visual {
+  margin: 0 8px;
+}
+
+.button--center {
+  justify-content: center;
+}
+
+.button--start {
+  justify-content: flex-start;
+}

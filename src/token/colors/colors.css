@@ -1,0 +1,56 @@
+/**
+ * Design System — OKLCH Tokens
+ * Functional color categories: Backgrounds, Interactive, Borders, Solid, Text
+ * Includes dark mode, APCA contrast-safe text, and alpha shadow scales.
+ */
+
+@import "../primitives.css";
+
+:root {
+  /* BACKGROUNDS */
+
+  --rst-bgColor-0: var(--rst-gray-0);
+  --rst-bgColor-overlay: var(--rst-gray-0);
+  --rst-bgColor-default: var(--rst-gray-100);
+  --rst-bgColor-default-hover: var(--rst-gray-110);
+  --rst-bgColor-default-focus: var(--rst-gray-120);
+  --rst-bgColor-default-active: var(--rst-gray-130);
+  --rst-bgColor-default-disabled: var(--rst-gray-200);
+  --rst-bgColor-primary: var(--rst-primary-600);
+  --rst-bgColor-primary-hover: var(--rst-primary-610);
+  --rst-bgColor-primary-focus: var(--rst-primary-620);
+  --rst-bgColor-primary-active: var(--rst-primary-630);
+  --rst-bgColor-danger-hover: var(--rst-red-700);
+  --rst-bgColor-danger-active: var(--rst-red-800);
+
+  /* INTERACTIVE COMPONENTS */
+  --rst-interactive-default: var(--rst-primary-500);
+  --rst-interactive-hover: var(--rst-primary-600);
+  --rst-interactive-active: var(--rst-primary-700);
+  --rst-interactive-disabled: var(--rst-gray-300);
+
+  /* SOLID COLORS */
+  --rst-solid-neutral: var(--rst-gray-500);
+  --rst-solid-primary: var(--rst-primary-500);
+  --rst-solid-positive: var(--rst-green-600);
+  --rst-solid-warning: var(--rst-yellow-800);
+  --rst-solid-danger: var(--rst-red-700);
+
+  /* ACCESSIBLE TEXT */
+  --rst-text-primary: var(--rst-gray-900);
+  --rst-text-secondary: var(--rst-gray-700);
+  --rst-text-on-primary: var(--rst-gray-0);
+  --rst-text-on-danger: var(--rst-gray-0);
+  --rst-text-disabled: var(--rst-gray-500);
+  --rst-text-danger: var(--rst-red-700);
+}
+
+/* OVERLAYS & SHADOWS */
+:root {
+  --rst-overlay-low: oklch(0 0 0 / 3%);
+  --rst-overlay-mid: oklch(0 0 0 / 0.08);
+  --rst-overlay-high: oklch(0 0 0 / 0.16);
+  --rst-shadow-soft: oklch(0 0 0 / 0.06);
+  --rst-shadow-medium: oklch(0 0 0 / 0.12);
+  --rst-shadow-hard: oklch(0 0 0 / 0.18);
+}
