@@ -10,4 +10,10 @@ export interface ListProps {
   width?: number;
   onClick?: (option: Option) => void;
   onKeyDown?: (e: React.KeyboardEvent) => void;
+  /**
+   * Callback to create a new option
+   * @param value option value
+   * @returns
+   */
+  onCreate?: (value: string) => void;
 }

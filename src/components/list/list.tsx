@@ -4,6 +4,7 @@ import { Input } from "../input/input";
 import { useVirtualListScroll } from "../../hooks/useVirtualListScroll";
 import { Icon } from "../../utility-components/icon/icon";
 import style from "./list.module.css";
+import { highlightMatch, useFilteredOptions } from "./list-utils";
 
 export const List: React.FC<ListProps> = ({
   id,
@@ -14,37 +15,31 @@ export const List: React.FC<ListProps> = ({
   width,
   onClick,
   onKeyDown,
+  onCreate,
 }) => {
   const inputRef = useRef<HTMLInputElement>(null);
   const [filterValue, setFilterValue] = useState<string>("");
   const listItemHeight: number = 24;
-  const [localSelectedIndex, setLocalSelectedIndex] = useState<number>(
-    selectedIndex !== null ? selectedIndex : -1
-  );
+  const [localSelectedIndex, setLocalSelectedIndex] = useState<number>(selectedIndex !== null ? selectedIndex : -1);
 
   useEffect(() => {
     inputRef.current?.focus(); // Focus on mount
   }, []);
 
   // Filter the options based on filter value
-  const filteredOptions = filterValue
-    ? options.filter((o) =>
-        o.value.toLowerCase().includes(filterValue.toLowerCase())
-      )
-    : options;
+  const filteredOptions = useFilteredOptions(options, filterValue);
+  const hasExactMatch = filteredOptions.some((opt) => opt.value.toLowerCase() === filterValue.toLowerCase());
 
-  const onListTextfieldChange = (value: string) => {
-    setFilterValue(value);
-  };
+  const showCreateItem = onCreate && filterValue && !hasExactMatch;
+  const fullOptions = showCreateItem ? [...filteredOptions, { value: `__create__${filterValue}` }] : filteredOptions;
 
   // Use our virtual scroll hook
-  const { virtualItems, containerProps, innerProps, scrollToIndex } =
-    useVirtualListScroll({
-      items: filteredOptions,
-      itemHeight: listItemHeight,
-      containerHeight: 200,
-      overscan: 5,
-    });
+  const { virtualItems, containerProps, innerProps, scrollToIndex } = useVirtualListScroll({
+    items: fullOptions,
+    itemHeight: listItemHeight,
+    containerHeight: 200,
+    overscan: 5,
+  });
 
   useEffect(() => {
     if (selectedIndex !== null && selectedIndex !== localSelectedIndex) {
@@ -54,10 +49,7 @@ export const List: React.FC<ListProps> = ({
   }, [selectedIndex]);
 
   useEffect(() => {
-    if (
-      localSelectedIndex >= 0 &&
-      localSelectedIndex < filteredOptions.length
-    ) {
+    if (localSelectedIndex >= 0 && localSelectedIndex < filteredOptions.length) {
       scrollToIndex(localSelectedIndex);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -70,43 +62,27 @@ export const List: React.FC<ListProps> = ({
       let newIndex = localSelectedIndex;
 
       if (e.key === "ArrowDown") {
-        newIndex =
-          localSelectedIndex < filteredOptions.length - 1
-            ? localSelectedIndex + 1
-            : 0;
+        newIndex = localSelectedIndex < filteredOptions.length - 1 ? localSelectedIndex + 1 : 0;
       } else if (e.key === "ArrowUp") {
-        newIndex =
-          localSelectedIndex > 0
-            ? localSelectedIndex - 1
-            : filteredOptions.length - 1;
+        newIndex = localSelectedIndex > 0 ? localSelectedIndex - 1 : filteredOptions.length - 1;
       }
 
       setLocalSelectedIndex(newIndex);
     } else if (e.key === "Enter") {
-      if (
-        localSelectedIndex >= 0 &&
-        localSelectedIndex < filteredOptions.length
-      ) {
-        onClick?.(filteredOptions[localSelectedIndex]);
+      const item = fullOptions[localSelectedIndex];
+      if (item?.value.startsWith("__create__")) {
+        onCreate?.(item.value.replace("__create__", ""));
+      } else if (item) {
+        onClick?.(item);
       }
     } else if (e.key === "Escape") {
       e.preventDefault();
       e.stopPropagation();
     }
-    if (onKeyDown) {
-      onKeyDown(e);
-    }
+    onKeyDown?.(e);
   };
 
-  // Filter text field keyboard handler
-  const handleFilterKeyDown = (e: React.KeyboardEvent) => {
-    handleKeyNavigation(e);
-  };
-
-  // List container keyboard handler
-  const handleListKeyDown = (e: React.KeyboardEvent) => {
-    handleKeyNavigation(e);
-  };
+  const handleListKeyDown = handleKeyNavigation;
 
   // Handle class for list
   const listClass = {
@@ -115,6 +91,7 @@ export const List: React.FC<ListProps> = ({
     container: `${style["rst-list-container"]}`,
     virtualScroll: `${style["rst-list-virtualScroll"]}`,
     listItem: `${style["rst-list-listItem"]}`,
+    listItemCreate: `${style["rst-list-listItem-create"]}`,
   };
 
   return (
@@ -128,13 +105,7 @@ export const List: React.FC<ListProps> = ({
       }}
     >
       <div className={listClass.input}>
-        <Input
-          value={filterValue}
-          placeholder="Search..."
-          onChange={onListTextfieldChange}
-          onKeyDown={handleFilterKeyDown}
-          ref={inputRef}
-        />
+        <Input value={filterValue} placeholder="Search..." onChange={setFilterValue} onKeyDown={handleKeyNavigation} ref={inputRef} />
       </div>
 
       <div
@@ -144,44 +115,54 @@ export const List: React.FC<ListProps> = ({
         role="listbox"
         aria-label="List"
         onKeyDown={handleListKeyDown}
-        aria-activedescendant={
-          localSelectedIndex >= 0 && localSelectedIndex < filteredOptions.length
-            ? filteredOptions[localSelectedIndex]?.value
-            : undefined
-        }
+        aria-activedescendant={localSelectedIndex >= 0 && localSelectedIndex < filteredOptions.length ? filteredOptions[localSelectedIndex]?.value : undefined}
       >
         <div {...innerProps} className={listClass.virtualScroll}>
-          {filteredOptions.length < 1 ? (
+          {filteredOptions.length === 0 && !onCreate ? (
             <div className={style["rst-list-noElements"]}>No elements</div>
           ) : (
-            virtualItems.map(({ item, index, offsetTop }) => {
-              const isActive = activeIndex.includes(item.value);
-              return (
-                <li
-                  key={index}
-                  role="option"
-                  id={item.value}
-                  aria-selected={
-                    localSelectedIndex === index ? "true" : "false"
-                  }
-                  tabIndex={-1}
-                  className={`${listClass.listItem} ${localSelectedIndex === index ? "selected-item" : ""}`}
-                  aria-label={item.value}
-                  style={{
-                    height: `${listItemHeight}px`,
-                    lineHeight: `calc(${listItemHeight}px - 2*2px)`,
-                    transform: `translateY(${offsetTop}px)`,
-                  }}
-                  onClick={() => {
-                    onClick?.(item);
-                    setLocalSelectedIndex(index);
-                  }}
-                >
-                  {item.value}
-                  {isActive && <Icon icon="check" />}
-                </li>
-              );
-            })
+            <>
+              {virtualItems.map(({ item, index, offsetTop }) => {
+                const isCreateItem = item.value.startsWith("__create__");
+                const displayValue = isCreateItem ? item.value.replace("__create__", "") : item.value;
+                const isActive = activeIndex.includes(item.value);
+                return (
+                  <li
+                    key={index}
+                    role="option"
+                    id={item.value}
+                    aria-selected={localSelectedIndex === index ? "true" : "false"}
+                    tabIndex={-1}
+                    className={`${listClass.listItem} ${localSelectedIndex === index ? "selected-item" : ""}`}
+                    aria-label={displayValue}
+                    style={{
+                      height: `${listItemHeight}px`,
+                      lineHeight: `calc(${listItemHeight}px - 2*2px)`,
+                      transform: `translateY(${offsetTop}px)`,
+                    }}
+                    onClick={() => {
+                      if (isCreateItem) {
+                        onCreate?.(displayValue);
+                      } else {
+                        onClick?.(item);
+                        setLocalSelectedIndex(index);
+                      }
+                    }}
+                  >
+                    {isCreateItem ? (
+                      <span className={listClass.listItemCreate}>
+                        <Icon icon="plus" /> <strong>{displayValue}</strong>
+                      </span>
+                    ) : (
+                      <>
+                        {highlightMatch(displayValue, filterValue)}
+                        {isActive && <Icon icon="check" />}
+                      </>
+                    )}
+                  </li>
+                );
+              })}
+            </>
           )}
         </div>
       </div>
