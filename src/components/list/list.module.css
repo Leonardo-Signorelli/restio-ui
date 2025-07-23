@@ -42,6 +42,12 @@
   list-style-type: none;
   font: var(--rst-font-body);
   border-radius: var(--rst-radius-md);
+
+  & .rst-list-listItem-create {
+    display: flex;
+    align-items: center;
+    gap: var(--rst-space-small);
+  }
 }
 
 .rst-list-listItem:hover {

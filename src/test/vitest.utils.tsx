@@ -4,3 +4,6 @@ import { vi } from "vitest";
 vi.mock("../../utility-components/icon/icon", () => ({
   Icon: () => <span data-testid="icon" role="application" />,
 }));
+vi.mock("@tanem/svg-injector", () => ({
+  default: () => Promise.resolve(),
+}));
