@@ -1,0 +1,8 @@
+.rst-icon {
+  fill: inherit;
+
+  &[aria-disabled="true"] {
+    fill: var(--rst-text-disabled);
+    cursor: not-allowed;
+  }
+}

@@ -2,6 +2,8 @@ import React, { useId } from "react";
 import { Icon } from "../../utility-components/icon/icon";
 import { InputProps } from "./input-types";
 import styles from "./input.module.css";
+import { Label } from "../../utility-components/label/label";
+import { HelperText } from "../../utility-components/helper-text/helper";
 
 export const Input: React.FC<InputProps> = ({
   value,
@@ -15,6 +17,7 @@ export const Input: React.FC<InputProps> = ({
   placeholder,
   ariaLabel,
   ref,
+  disabled,
 }) => {
   const inputId = useId();
   const helperId = `${inputId}-helper`;
@@ -29,18 +32,16 @@ export const Input: React.FC<InputProps> = ({
     fieldWrapper: anchorName ? { anchorName } : undefined,
   };
 
-  const onChangeHandler: React.ChangeEventHandler<HTMLInputElement> = (
-    event
-  ) => {
+  const onChangeHandler: React.ChangeEventHandler<HTMLInputElement> = (event) => {
     onChange?.(event.target.value);
   };
 
   return (
     <div className={inputClass.fieldWrapper}>
-      {label && <label htmlFor={inputId}>{label}</label>}
+      {label && <Label label={label} id={inputId} disabled={disabled}></Label>}
 
       <span className={inputClass.inputWrapper} style={inputStyle}>
-        {leadingIcon && <Icon icon={leadingIcon} />}
+        {leadingIcon && <Icon icon={leadingIcon} disabled={disabled} />}
         <input
           id={inputId}
           value={value}
@@ -51,15 +52,12 @@ export const Input: React.FC<InputProps> = ({
           aria-label={ariaLabel}
           aria-describedby={helperText ? helperId : undefined}
           ref={ref}
+          disabled={disabled}
         />
         {trailingIcon && <Icon icon={trailingIcon} />}
       </span>
 
-      {helperText && (
-        <span id={helperId} aria-live="polite">
-          {helperText}
-        </span>
-      )}
+      {helperText && <HelperText helperText={helperText} id={helperId} disabled={disabled} />}
     </div>
   );
 };

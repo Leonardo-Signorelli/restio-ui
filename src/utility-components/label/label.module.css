@@ -1,0 +1,10 @@
+.rst-label {
+  color: var(--rst-text-on-bg);
+  cursor: inherit;
+  font: var(--rst-font-label);
+
+  &[aria-disabled="true"] {
+    color: var(--rst-text-disabled);
+    cursor: not-allowed;
+  }
+}

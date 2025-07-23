@@ -41,4 +41,9 @@ export interface InputProps {
     helperText?: string;
 
     ref?: RefObject<HTMLInputElement | null>;
+
+    /**
+     * Manage disabled state
+     */
+    disabled?: boolean
 }
