@@ -1,12 +1,59 @@
 // list-utils.test.tsx
 import React from "react";
-import { render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { highlightMatch, getFullOptions, handleKeyNavigation } from "./list-utils";
 import { ListProps } from "./list-types";
+import { List } from "./list";
 import type { KeyboardEvent } from "react";
+import "@testing-library/jest-dom";
 
-describe("highlightMatch", () => {
+const options = [{ value: "apple" }, { value: "banana" }, { value: "orange" }];
+
+describe("List Component", () => {
+  // --- 1. Focus Management ---
+  it("should focus the input on mount", () => {
+    render(<List id="test-list" options={options} />);
+    const input = screen.getByPlaceholderText("Search...");
+    expect(document.activeElement).toBe(input);
+  });
+
+  it("should update localSelectedIndex when selectedIndex prop changes", () => {
+    const { rerender } = render(<List id="test-list" options={options} selectedIndex={0} />);
+    expect(screen.getAllByRole("option")[0]).toHaveAttribute("aria-selected", "true");
+
+    rerender(<List id="test-list" options={options} selectedIndex={1} />);
+    expect(screen.getAllByRole("option")[1]).toHaveAttribute("aria-selected", "true");
+  });
+
+  // --- 2. Filtering & Create Option UI ---
+  it("should show 'No elements' when no options and no onCreate", () => {
+    render(<List id="test-list" options={[]} />);
+    expect(screen.getByText("No elements")).toBeInTheDocument();
+  });
+
+  // --- 5. Rendering & Accessibility ---
+  it("should render each option with correct aria attributes and roles", () => {
+    render(<List id="test-list" options={options} />);
+    const optionsRendered = screen.getAllByRole("option");
+
+    optionsRendered.forEach((option, index) => {
+      expect(option).toHaveAttribute("role", "option");
+      expect(option).toHaveAttribute("aria-selected", "false"); // none selected initially
+      expect(option).toHaveAttribute("id", options[index].value);
+    });
+  });
+
+  it("should apply selected class and aria-selected when item selected", () => {
+    render(<List id="test-list" options={options} selectedIndex={1} />);
+    const optionsRendered = screen.getAllByRole("option");
+
+    expect(optionsRendered[1]).toHaveClass("selected-item");
+    expect(optionsRendered[1]).toHaveAttribute("aria-selected", "true");
+  });
+});
+
+describe("highlightMatch utils", () => {
   it("returns plain text when no query is provided", () => {
     expect(highlightMatch("Hello World", "")).toBe("Hello World");
   });
@@ -26,7 +73,7 @@ describe("highlightMatch", () => {
   });
 });
 
-describe("getFullOptions", () => {
+describe("getFullOptions utils", () => {
   const options: ListProps["options"] = [{ value: "apple" }, { value: "banana" }, { value: "orange" }];
 
   it("filters options by query", () => {
@@ -51,7 +98,7 @@ describe("getFullOptions", () => {
   });
 });
 
-describe("handleKeyNavigation", () => {
+describe("handleKeyNavigation utils", () => {
   const options = [{ value: "one" }, { value: "two" }, { value: "three" }];
 
   let selectedIndex = 1;
