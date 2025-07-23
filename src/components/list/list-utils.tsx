@@ -1,5 +1,5 @@
 import React from "react";
-import { useMemo } from "react";
+import { ListProps } from "./list-types";
 
 /**
  * Restituisce un elemento con parti della stringa `text` evidenziate in <strong>
@@ -27,8 +27,60 @@ export function highlightMatch(text: string, query: string): React.ReactNode {
   );
 }
 
-export function useFilteredOptions(options: { value: string }[], filter: string) {
-  return useMemo(() => {
-    return filter ? options.filter((o) => o.value.toLowerCase().includes(filter.toLowerCase())) : options;
-  }, [options, filter]);
-}
+export const getFullOptions = (options: ListProps["options"], filterValue: string, onCreate?: ListProps["onCreate"]) => {
+  const filtered = options.filter((opt) => opt.value.toLowerCase().includes(filterValue.toLowerCase()));
+  const hasExactMatch = filtered.some((opt) => opt.value.toLowerCase() === filterValue.toLowerCase());
+
+  const showCreateItem = onCreate && filterValue && !hasExactMatch;
+  const full = showCreateItem ? [...filtered, { value: `__create__${filterValue}` }] : filtered;
+
+  return {
+    filteredOptions: filtered,
+    fullOptions: full,
+    showCreateItem,
+  };
+};
+
+export const handleKeyNavigation = ({
+  e,
+  localSelectedIndex,
+  setLocalSelectedIndex,
+  filteredOptions,
+  fullOptions,
+  onClick,
+  onCreate,
+  onKeyDown,
+}: {
+  e: React.KeyboardEvent;
+  localSelectedIndex: number;
+  setLocalSelectedIndex: (i: number) => void;
+  filteredOptions: ListProps["options"];
+  fullOptions: ListProps["options"];
+  onClick?: ListProps["onClick"];
+  onCreate?: ListProps["onCreate"];
+  onKeyDown?: ListProps["onKeyDown"];
+}) => {
+  if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+    e.preventDefault();
+    let newIndex = localSelectedIndex;
+
+    if (e.key === "ArrowDown") {
+      newIndex = localSelectedIndex < filteredOptions.length - 1 ? localSelectedIndex + 1 : 0;
+    } else if (e.key === "ArrowUp") {
+      newIndex = localSelectedIndex > 0 ? localSelectedIndex - 1 : filteredOptions.length - 1;
+    }
+
+    setLocalSelectedIndex(newIndex);
+  } else if (e.key === "Enter") {
+    const item = fullOptions[localSelectedIndex];
+    if (item?.value.startsWith("__create__")) {
+      onCreate?.(item.value.replace("__create__", ""));
+    } else if (item) {
+      onClick?.(item);
+    }
+  } else if (e.key === "Escape") {
+    e.preventDefault();
+    e.stopPropagation();
+  }
+  onKeyDown?.(e);
+};
