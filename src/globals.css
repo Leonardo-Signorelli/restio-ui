@@ -2,5 +2,5 @@
 * This file is where you can import global styles and CSS Variables.
 */
 
-@import url("./token/primitives.css");
-@import url("./token/alias.css");
+@import url("./styles/primitives.css");
+@import url("./styles/alias.css");
