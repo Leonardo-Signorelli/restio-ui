@@ -2,8 +2,11 @@ import React from "react";
 import { ListProps } from "./list-types";
 
 /**
- * Restituisce un elemento con parti della stringa `text` evidenziate in <strong>
- * se corrispondono alla `query`.
+ * Highlights the part of the `text` that matches the `query` using a <strong> tag.
+ *
+ * @param text - The original string to search in.
+ * @param query - The substring to highlight if found in the text.
+ * @returns A React node with the matched part wrapped in <strong>, or the plain text if no match.
  */
 export function highlightMatch(text: string, query: string): React.ReactNode {
   if (!query) return text;
@@ -27,11 +30,21 @@ export function highlightMatch(text: string, query: string): React.ReactNode {
   );
 }
 
+/**
+ * Filters the provided options based on the filter string, and appends a "create new item" option
+ * if the filter does not exactly match any existing option and `onCreate` is provided.
+ *
+ * @param options - The list of selectable options.
+ * @param filterValue - The string used to filter the options.
+ * @param onCreate - Optional callback used to enable the "create" feature.
+ * @returns An object containing the filtered options, the final options (possibly including a create item),
+ *          and a flag indicating whether the create item is shown.
+ */
 export const getFullOptions = (options: ListProps["options"], filterValue: string, onCreate?: ListProps["onCreate"]) => {
   const filtered = options.filter((opt) => opt.value.toLowerCase().includes(filterValue.toLowerCase()));
   const hasExactMatch = filtered.some((opt) => opt.value.toLowerCase() === filterValue.toLowerCase());
 
-  const showCreateItem = onCreate && filterValue && !hasExactMatch;
+  const showCreateItem = Boolean(onCreate && filterValue && !hasExactMatch);
   const full = showCreateItem ? [...filtered, { value: `__create__${filterValue}` }] : filtered;
 
   return {
@@ -41,6 +54,20 @@ export const getFullOptions = (options: ListProps["options"], filterValue: strin
   };
 };
 
+/**
+ * Handles keyboard navigation within a list component, including arrow navigation, selection (Enter),
+ * and escape behavior. Also triggers `onClick`, `onCreate`, or `onKeyDown` as needed.
+ *
+ * @param params - An object containing the keyboard event and relevant list control functions and data.
+ * @param params.e - The keyboard event.
+ * @param params.localSelectedIndex - The current selected index in the list.
+ * @param params.setLocalSelectedIndex - Setter to update the selected index.
+ * @param params.filteredOptions - The options shown after filtering.
+ * @param params.fullOptions - The full list of options (may include "create new" entry).
+ * @param params.onClick - Callback when an item is selected.
+ * @param params.onCreate - Callback when a "create new" action is triggered.
+ * @param params.onKeyDown - Optional additional key down handler.
+ */
 export const handleKeyNavigation = ({
   e,
   localSelectedIndex,
