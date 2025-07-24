@@ -18,7 +18,7 @@ export const Icon: React.FC<IconProps> = React.memo(({ icon, disabled }) => {
         role="application"
         width={"1rem"}
         height={"1rem"}
-        tabIndex={0}
+        // tabIndex={0}
         aria-disabled={disabled}
         className={iconClass.icon}
       />

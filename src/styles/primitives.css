@@ -119,6 +119,7 @@
   --rst-font-family-sans: "Inter", sans-serif; /* Primary UI font */
   --rst-font-family-mono: "Fira Code", monospace; /* For code and fixed-width text */
 
+  /* fontsize */
   --rst-font-size-xs: 0.75rem; /* 12px - captions and small text */
   --rst-font-size-sm: 0.875rem; /* 14px - base body text */
   --rst-font-size-md: 1rem; /* 16px - headings */

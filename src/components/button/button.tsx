@@ -18,26 +18,21 @@ export const Button: React.FC<ButtonProps> = ({
   const isLoading = loading || disabled;
 
   const buttonClassNames = [
-    styles.button,
-    styles[`button--${variant}`],
-    styles[`button--${size}`],
-    isLoading ? styles["button--loading"] : "",
-    disabled ? styles["button--disabled"] : "",
-    styles[`button--${alignContent}`],
+    styles[`rst-button`],
+    styles[`rst-button-${variant}`],
+    styles[`rst-button-${size}`],
+    isLoading ? styles["rst-button-loading"] : "",
+    disabled ? styles["rst-button-disabled"] : "",
+    styles[`rst-button-${alignContent}`],
   ]
     .filter(Boolean)
     .join(" ");
 
   return (
-    <button
-      className={buttonClassNames}
-      disabled={isLoading || disabled}
-      {...props}
-      style={{ anchorName: anchorName }}
-    >
-      {leadingVisual && <Icon icon={"check"}></Icon>}
+    <button className={buttonClassNames} disabled={isLoading || disabled} {...props} style={{ anchorName: anchorName }}>
+      {leadingVisual && <Icon icon={leadingVisual}></Icon>}
       {value}
-      {trailingVisual && <Icon icon={"check"}></Icon>}
+      {trailingVisual && <Icon icon={trailingVisual}></Icon>}
     </button>
   );
 };
