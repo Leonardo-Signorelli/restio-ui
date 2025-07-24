@@ -1,0 +1,20 @@
+.rst-button-group {
+  display: flex;
+  flex-wrap: wrap;
+
+  > button {
+    border-radius: 0;
+    border-right: 0;
+  }
+
+  > button:first-child {
+    border-top-left-radius: var(--rst-radius-md);
+    border-bottom-left-radius: var(--rst-radius-md);
+  }
+
+  > button:last-child {
+    border-top-right-radius: var(--rst-radius-md);
+    border-bottom-right-radius: var(--rst-radius-md);
+    border-right: 1px solid var(--rst-border-default);
+  }
+}

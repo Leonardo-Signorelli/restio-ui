@@ -5,6 +5,7 @@ import { Button } from "../button/button";
 import { SingleFilter, FieldOption, FilterValue, FilterGroup, Filter, LogicType } from "./filter-builder-types";
 import { Input } from "../input/input";
 import Select from "../select/select";
+import { ButtonGroup } from "../button-group/button-group";
 
 const FilterEditor: React.FC<{
   readonly filter: SingleFilter;
@@ -158,14 +159,7 @@ const FilterGroupEditor: React.FC<{
   return (
     <div className={filterBuilderClass.filterGroup} style={level != 0 ? { marginLeft: 20 } : undefined} data-component={level === 0 ? "filter" : undefined}>
       <div className={filterBuilderClass.filterToolbar}>
-        {/* <ButtonGroup
-          options={[
-            { id: "and", value: "AND" },
-            { id: "or", value: "OR" },
-          ]}
-          bindValue={group.logic}
-          onChange={handleLogicChange}
-        /> */}
+        <ButtonGroup options={[{ value: "and" }, { value: "or" }]} value={group.logic} onChange={handleLogicChange} />
         <div className={filterBuilderClass.actionButtons}>
           <Button onClick={addSingleFilter} value={"add filter"} leadingVisual="plus" variant="base" />
           <Button onClick={addSubGroup} value={"add sub group"} leadingVisual="plus" variant="base" />
