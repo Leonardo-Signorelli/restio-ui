@@ -71,7 +71,7 @@ const FilterEditor: React.FC<{
   const renderInput = () => {
     switch (filter.columnsType) {
       case "string":
-        return <Input value={filter.value as string} onChange={handleValueChange} />;
+        return <Input value={filter.value as string} size="medium" onChange={handleValueChange} />;
       //   case "number":
       //     return <InputNumber bindValue={filter.value as number} onChange={handleValueChange} />;
       //   case "date":
@@ -89,17 +89,17 @@ const FilterEditor: React.FC<{
       <Select value={filter.field.value} options={fieldOptions.map((f) => ({ value: f.value }))} onChange={handleFieldChange} />
       <Select value={filter.operator.value} options={operatorOptionsMap[filter.columnsType]} onChange={handleOperatorChange} />
       {renderInput()}
-      <Button value="Delete" onClick={onDelete} variant="base" leadingVisual="delete"></Button>
+      <Button onClick={onDelete} variant="invisible" leadingVisual="delete"></Button>
     </div>
   );
 };
 
 const FilterGroupEditor: React.FC<{
   readonly group: FilterGroup;
-  readonly onChange: (g: FilterGroup) => void;
   readonly fieldOptions: FieldOption[];
-  readonly onDelete?: () => void;
   readonly level?: number;
+  readonly onChange: (g: FilterGroup) => void;
+  readonly onDelete?: () => void;
   readonly onClose?: () => void;
 }> = ({ group, onChange, onDelete, onClose, level = 0, fieldOptions }) => {
   const updateFilter = (index: number, updated: Filter) => {
@@ -163,7 +163,7 @@ const FilterGroupEditor: React.FC<{
         <div className={filterBuilderClass.actionButtons}>
           <Button onClick={addSingleFilter} value={"add filter"} leadingVisual="plus" variant="base" />
           <Button onClick={addSubGroup} value={"add sub group"} leadingVisual="plus" variant="base" />
-          {onDelete && <Button value="Delete" onClick={onDelete} variant="danger" leadingVisual="delete"></Button>}
+          {onDelete && <Button value="Delete" onClick={onDelete} variant="invisible" leadingVisual="delete"></Button>}
           {onClose && <Button value="Close" onClick={onClose} leadingVisual="close" variant="base"></Button>}
         </div>
       </div>

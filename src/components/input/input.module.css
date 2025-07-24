@@ -14,9 +14,28 @@
   background-color: transparent;
   padding: var(--rst-space-small);
   font: var(--rst-font-body);
+  box-sizing: border-box;
   transition:
     border-color 0.2s ease,
     box-shadow 0.2s ease;
+
+  &.rst-input-small {
+    padding: var(--rst-space-xsmall) var(--rst-space-small);
+    font-size: var(--rst-font-size-xs);
+    height: var(--rst-size-small);
+  }
+
+  &.rst-input-medium {
+    padding: var(--rst-space-small) var(--rst-space-medium);
+    font-size: var(--rst-font-size-sm);
+    height: var(--rst-size-medium);
+  }
+
+  &.rst-input-large {
+    padding: var(--rst-space-medium) var(--rst-space-large);
+    font-size: var(--rst-font-size-sm);
+    height: var(--rst-size-large);
+  }
 }
 
 .rst-input-wrapper:focus-within {

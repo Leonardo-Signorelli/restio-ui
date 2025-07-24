@@ -1,3 +1,4 @@
+import { Size } from "../../types/global-types";
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -6,7 +7,7 @@ alignContent?: 'start' | 'center';
 leadingVisual?: string;
 trailingVisual?: string;
 loading?: boolean;
-size?: "small" | "medium" | "large";
+size?: Size;
 variant?: "base" | "primary" | "danger" | "invisible" | "link"
 disabled?: boolean
 }

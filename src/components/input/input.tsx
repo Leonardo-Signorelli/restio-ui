@@ -18,14 +18,15 @@ export const Input: React.FC<InputProps> = ({
   ariaLabel,
   ref,
   disabled,
+  size,
 }) => {
   const inputId = useId();
   const helperId = `${inputId}-helper`;
 
   const inputClass = {
     fieldWrapper: styles["rst-inputField-wrapper"],
-    inputWrapper: styles["rst-input-wrapper"],
-    input: styles["rst-input"],
+    inputWrapper: `${styles["rst-input-wrapper"]}  ${size ? styles[`rst-input-${size}`] : ""}`,
+    input: `${styles["rst-input"]}`,
   };
 
   const inputStyle = {

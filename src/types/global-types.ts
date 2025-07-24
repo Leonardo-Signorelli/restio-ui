@@ -3,3 +3,5 @@ export interface Option{
     leadingVisual?: string
     disabled?: boolean
 }
+
+export type Size= "small" | "medium" | "large";

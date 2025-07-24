@@ -1,4 +1,5 @@
 import { RefObject } from "react";
+import { Size } from "../../types/global-types";
 
 export interface InputProps {
     /**
@@ -46,4 +47,9 @@ export interface InputProps {
      * Manage disabled state
      */
     disabled?: boolean
+
+        /**
+     * Manage disabled state
+     */
+    size?: Size
 }
