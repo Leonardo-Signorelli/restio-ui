@@ -3,7 +3,7 @@ import { Icon } from "../../utility-components/icon/icon";
 import { InputProps } from "./input-types";
 import styles from "./input.module.css";
 import { Label } from "../../utility-components/label/label";
-import { HelperText } from "../../utility-components/helper-text/helper";
+import { HelperText } from "../../utility-components/helper-text/helper-text";
 
 export const Input: React.FC<InputProps> = ({
   value,

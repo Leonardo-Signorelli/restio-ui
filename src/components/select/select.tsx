@@ -5,7 +5,7 @@ import { SelectProps } from "./select-types";
 import { Option } from "./../../types/global-types";
 import { Button } from "../button/button";
 import { Label } from "../../utility-components/label/label";
-import { HelperText } from "../../utility-components/helper-text/helper";
+import { HelperText } from "../../utility-components/helper-text/helper-text";
 import styles from "./select.module.css";
 
 export const Select: React.FC<SelectProps> = ({ value, onChange, options, multiActiveIndex, label, helperText, disabled, multiple = false }) => {

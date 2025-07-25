@@ -5,7 +5,7 @@ import { Select } from "./select";
 import { SelectProps } from "./select-types";
 
 const meta = {
-  title: "Components/Select",
+  title: "Components/Select Multi-Single",
   component: Select,
   parameters: {
     layout: "centered",

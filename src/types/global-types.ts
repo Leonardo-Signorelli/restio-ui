@@ -5,3 +5,5 @@ export interface Option{
 }
 
 export type Size= "small" | "medium" | "large";
+
+export type State = "success" | "warning" | "danger"

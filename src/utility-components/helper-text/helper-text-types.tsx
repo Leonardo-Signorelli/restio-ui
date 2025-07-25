@@ -1,3 +1,5 @@
+import { State } from "../../types/global-types";
+
 export interface HelperTextProps {
   /**
    * The value of the helperText
@@ -13,4 +15,9 @@ export interface HelperTextProps {
    * Manage disabled state
    */
   disabled?: boolean;
+
+  /**
+   * Manage disabled state
+   */
+  state?: State;
 }
