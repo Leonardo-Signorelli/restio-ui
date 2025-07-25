@@ -9,6 +9,11 @@ export interface ListProps {
   activeIndex?: string[];
   width?: number;
   anchorName?: string;
+
+  /**
+   * Accepts multiple aria-selected
+   */
+  multiple?: boolean;
   onClick?: (option: Option) => void;
   onKeyDown?: (e: React.KeyboardEvent) => void;
   /**

@@ -20,8 +20,8 @@ type Story = StoryObj<typeof meta>;
 const ControlledSelect: ArgsStoryFn<ReactRenderer, SelectProps> = ({ ...args }) => {
   const [currentArgs, updateArgs] = useArgs();
 
-  const handleChange = (value: string) => {
-    updateArgs({ value: value });
+  const handleChange = (value: string | string[]) => {
+    updateArgs({ value });
   };
 
   return <Select {...args} value={currentArgs.value} onChange={handleChange} />;
@@ -30,17 +30,7 @@ const ControlledSelect: ArgsStoryFn<ReactRenderer, SelectProps> = ({ ...args }) 
 export const Default: Story = {
   args: {
     value: "option1",
-    options: [
-      {
-        value: "option1",
-      },
-      {
-        value: "option2",
-      },
-      {
-        value: "option3",
-      },
-    ],
+    options: [{ value: "option1" }, { value: "option2" }, { value: "option3" }],
   },
   render: ControlledSelect,
 };
@@ -50,17 +40,7 @@ export const FullSelect: Story = {
     value: "option1",
     helperText: "The list of options helps you choose one",
     label: "Option Selector",
-    options: [
-      {
-        value: "option1",
-      },
-      {
-        value: "option2",
-      },
-      {
-        value: "option3",
-      },
-    ],
+    options: [{ value: "option1" }, { value: "option2" }, { value: "option3" }],
   },
   render: ControlledSelect,
 };
@@ -71,7 +51,18 @@ export const Disabled: Story = {
     helperText: "The list of options helps you choose one",
     label: "Option Selector",
     disabled: true,
-    options: [],
+    options: [{ value: "option1" }, { value: "option2" }],
+  },
+  render: ControlledSelect,
+};
+
+export const MultipleSelect: Story = {
+  args: {
+    value: ["option1", "option3"],
+    multiple: true,
+    helperText: "Select multiple options",
+    label: "Multi Option Selector",
+    options: [{ value: "option1" }, { value: "option2" }, { value: "option3" }, { value: "option4" }],
   },
   render: ControlledSelect,
 };

@@ -4,7 +4,7 @@ export interface SelectProps {
   /**
    * Active value of the select
    */
-  value: string;
+  value: string | string[]; // string for single, string[] for multiple
   /**
    * List of possible options
    */
@@ -25,6 +25,10 @@ export interface SelectProps {
    * Manage disabled state
    */
   disabled?: boolean;
+  /**
+   * When true, it will enable the multiselection
+   */
+  multiple?: boolean;
   onClick?: (value: string) => void;
-  onChange?: (value: string) => void;
+  onChange?: (value: string | string[]) => void;
 }
