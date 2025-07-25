@@ -30,9 +30,9 @@ export const Button: React.FC<ButtonProps> = ({
 
   return (
     <button className={buttonClassNames} disabled={isLoading || disabled} {...props} style={{ anchorName: anchorName }}>
-      {leadingVisual && <Icon icon={leadingVisual}></Icon>}
+      {leadingVisual && <Icon icon={leadingVisual} disabled={disabled}></Icon>}
       {value}
-      {trailingVisual && <Icon icon={trailingVisual}></Icon>}
+      {trailingVisual && <Icon icon={trailingVisual} disabled={disabled}></Icon>}
     </button>
   );
 };

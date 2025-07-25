@@ -8,6 +8,7 @@ export interface ListProps {
   selectedIndex?: number;
   activeIndex?: string[];
   width?: number;
+  anchorName?: string;
   onClick?: (option: Option) => void;
   onKeyDown?: (e: React.KeyboardEvent) => void;
   /**

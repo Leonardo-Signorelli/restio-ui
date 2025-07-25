@@ -37,6 +37,9 @@ export interface InputProps {
 
     anchorName?: string; // Anchor name variable
 
+    /**
+     * Label of the field
+     */
     label?: string
 
     helperText?: string;

@@ -13,6 +13,7 @@ export const List: React.FC<ListProps> = ({
   selectedIndex = null, // current outline element
   activeIndex = [], // active element
   width,
+  anchorName,
   onClick,
   onKeyDown,
   onCreate,
@@ -63,7 +64,7 @@ export const List: React.FC<ListProps> = ({
   };
 
   return (
-    <div id={id} ref={ref as React.Ref<HTMLDivElement>} className={listClass.wrapper} data-component="list" style={{ width }}>
+    <div id={id} ref={ref as React.Ref<HTMLDivElement>} className={listClass.wrapper} data-component="list" style={{ width, positionAnchor: anchorName }}>
       <div className={listClass.input}>
         <Input
           value={filterValue}

@@ -17,9 +17,7 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-const ControlledSelect: ArgsStoryFn<ReactRenderer, SelectProps> = ({
-  ...args
-}) => {
+const ControlledSelect: ArgsStoryFn<ReactRenderer, SelectProps> = ({ ...args }) => {
   const [currentArgs, updateArgs] = useArgs();
 
   const handleChange = (value: string) => {
@@ -43,6 +41,37 @@ export const Default: Story = {
         value: "option3",
       },
     ],
+  },
+  render: ControlledSelect,
+};
+
+export const FullSelect: Story = {
+  args: {
+    value: "option1",
+    helperText: "The list of options helps you choose one",
+    label: "Option Selector",
+    options: [
+      {
+        value: "option1",
+      },
+      {
+        value: "option2",
+      },
+      {
+        value: "option3",
+      },
+    ],
+  },
+  render: ControlledSelect,
+};
+
+export const Disabled: Story = {
+  args: {
+    value: "option1",
+    helperText: "The list of options helps you choose one",
+    label: "Option Selector",
+    disabled: true,
+    options: [],
   },
   render: ControlledSelect,
 };

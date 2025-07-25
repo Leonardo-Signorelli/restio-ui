@@ -8,6 +8,7 @@ declare module 'react' {
     // Aggiungi qui le nuove proprietà non standard che vuoi usare.
     // Usiamo '?' per indicare che la proprietà è opzionale.
     anchorName?: string;
+    positionAnchor?:string
     
     // Se userai altre proprietà dell'API, puoi aggiungerle qui:
     // positionFallback?: string; 
