@@ -40,7 +40,7 @@ const FilterEditor: React.FC<{
     date: [{ value: "Prima di" }, { value: "Dopo il" }, { value: "Il giorno" }],
   };
 
-  const handleFieldChange = (value: string) => {
+  const handleFieldChange = (value: string | string[]) => {
     const selectedField = fieldOptions.find((f) => f.value === value);
     if (!selectedField) return;
 
@@ -57,7 +57,7 @@ const FilterEditor: React.FC<{
     });
   };
 
-  const handleOperatorChange = (value: string) => {
+  const handleOperatorChange = (value: string | string[]) => {
     const selectedOperator = operatorOptionsMap[filter.columnsType]?.find((op) => op.value === value);
     if (selectedOperator) {
       onChange({ ...filter, operator: selectedOperator });
