@@ -17,19 +17,19 @@ export const List: React.FC<ListProps> = ({
   onKeyDown,
   onCreate,
   multiple = false,
-  selectedIndex,
+  selectedIndex = -1,
 }) => {
   const inputRef = useRef<HTMLInputElement>(null);
   const [filterValue, setFilterValue] = useState<string>("");
   const listItemHeight = 24;
-  const [localSelectedIndex, setLocalSelectedIndex] = useState<number>(selectedIndex || -1);
+  const [localSelectedIndex, setLocalSelectedIndex] = useState<number>(selectedIndex);
 
   useEffect(() => {
     inputRef.current?.focus();
   }, []);
 
   useEffect(() => {
-    setLocalSelectedIndex(selectedIndex || -1);
+    setLocalSelectedIndex(selectedIndex);
   }, [selectedIndex]);
 
   const { filteredOptions, fullOptions } = getFullOptions(options, filterValue, onCreate);
