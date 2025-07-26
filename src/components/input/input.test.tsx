@@ -21,7 +21,7 @@ describe("Input component", () => {
   });
 
   it("renders leading and trailing icons if provided", () => {
-    render(<Input value="" onChange={() => {}} leadingIcon="user" trailingIcon="check" ariaLabel="with-icons" />);
+    render(<Input value="" onChange={() => {}} leadingIcon="plus" trailingIcon="check" ariaLabel="with-icons" />);
 
     const icons = screen.getAllByRole("application"); // Assuming Icon component uses role="img"
     expect(icons.length).toBe(2);
