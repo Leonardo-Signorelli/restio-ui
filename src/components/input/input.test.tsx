@@ -1,7 +1,6 @@
 import { describe, it, expect, vi } from "vitest";
 import { render, screen, fireEvent } from "@testing-library/react";
 import { Input } from "./input";
-import "@testing-library/jest-dom";
 
 describe("Input component", () => {
   it("renders with label and placeholder", () => {
