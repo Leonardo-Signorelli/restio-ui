@@ -1,0 +1,44 @@
+.rst-filter-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  box-shadow: var(--rst-elevation-2);
+  background-color: var(--rst-bgColor-0);
+}
+
+.rst-filter-group {
+  padding: var(--rst-space-small);
+  border-left: 1px solid var(--rst-border-default);
+  display: flex;
+  flex-direction: column;
+  gap: var(--rst-space-small);
+}
+
+.rst-filter-row {
+  display: flex;
+  gap: var(--rst-space-small);
+  align-items: end;
+}
+
+.rst-filter-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--rst-space-small);
+  align-items: baseline;
+}
+
+.rst-filter-toolbar {
+  padding-top: var(--rst-space-small);
+  padding-bottom: var(--rst-space-small);
+  border-bottom: 1px solid var(--rst-border-default);
+  display: flex;
+  gap: var(--rst-space-small);
+  justify-content: space-between;
+  align-items: center;
+}
+
+.rst-filter-actionButtons {
+  display: flex;
+  gap: var(--rst-space-small);
+}

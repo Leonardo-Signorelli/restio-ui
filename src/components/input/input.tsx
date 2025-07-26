@@ -3,7 +3,7 @@ import { Icon } from "../../utility-components/icon/icon";
 import { InputProps } from "./input-types";
 import styles from "./input.module.css";
 import { Label } from "../../utility-components/label/label";
-import { HelperText } from "../../utility-components/helper-text/helper";
+import { HelperText } from "../../utility-components/helper-text/helper-text";
 
 export const Input: React.FC<InputProps> = ({
   value,
@@ -18,14 +18,15 @@ export const Input: React.FC<InputProps> = ({
   ariaLabel,
   ref,
   disabled,
+  size,
 }) => {
   const inputId = useId();
   const helperId = `${inputId}-helper`;
 
   const inputClass = {
     fieldWrapper: styles["rst-inputField-wrapper"],
-    inputWrapper: styles["rst-input-wrapper"],
-    input: styles["rst-input"],
+    inputWrapper: `${styles["rst-input-wrapper"]}  ${size ? styles[`rst-input-${size}`] : ""}`,
+    input: `${styles["rst-input"]}`,
   };
 
   const inputStyle = {

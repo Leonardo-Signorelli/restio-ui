@@ -51,7 +51,7 @@
   /* ==== SOLID COLORS ==== */
   --rst-solid-neutral: var(--rst-gray-500);
   --rst-solid-primary: var(--rst-primary-500);
-  --rst-solid-positive: var(--rst-green-600);
+  --rst-solid-success: var(--rst-green-600);
   --rst-solid-warning: var(--rst-yellow-800);
   --rst-solid-danger: var(--rst-red-700);
 

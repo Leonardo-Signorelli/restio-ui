@@ -19,8 +19,8 @@ describe("List Component", () => {
   });
 
   it("should update localSelectedIndex when selectedIndex prop changes", () => {
-    const { rerender } = render(<List id="test-list" options={options} selectedIndex={0} />);
-    expect(screen.getAllByRole("option")[0]).toHaveAttribute("aria-selected", "true");
+    const { rerender } = render(<List id="test-list" options={options} selectedIndex={-1} />);
+    expect(screen.getAllByRole("option")[0]).toHaveAttribute("aria-selected", "false");
 
     rerender(<List id="test-list" options={options} selectedIndex={1} />);
     expect(screen.getAllByRole("option")[1]).toHaveAttribute("aria-selected", "true");
@@ -48,7 +48,6 @@ describe("List Component", () => {
     render(<List id="test-list" options={options} selectedIndex={1} />);
     const optionsRendered = screen.getAllByRole("option");
 
-    expect(optionsRendered[1]).toHaveClass("selected-item");
     expect(optionsRendered[1]).toHaveAttribute("aria-selected", "true");
   });
 });

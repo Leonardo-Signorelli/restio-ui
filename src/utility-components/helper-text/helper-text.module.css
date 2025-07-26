@@ -1,7 +1,18 @@
 .rst-helper-text {
+  display: flex;
+  align-items: center;
+  gap: var(--rst-space-small);
   color: var(--rst-text-on-bg);
   cursor: inherit;
   font: var(--rst-font-label);
+
+  &.rst-helper-text-success {
+    color: var(--rst-solid-success);
+  }
+
+  &.rst-helper-text-danger {
+    color: var(--rst-solid-danger);
+  }
 
   &[aria-disabled="true"] {
     color: var(--rst-text-disabled);

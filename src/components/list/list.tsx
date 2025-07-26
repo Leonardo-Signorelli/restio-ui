@@ -10,26 +10,30 @@ export const List: React.FC<ListProps> = ({
   id,
   options,
   ref,
-  selectedIndex = null, // current outline element
-  activeIndex = [], // active element
+  activeIndex = [],
   width,
+  anchorName,
   onClick,
   onKeyDown,
   onCreate,
+  multiple = false,
+  selectedIndex = -1,
 }) => {
   const inputRef = useRef<HTMLInputElement>(null);
   const [filterValue, setFilterValue] = useState<string>("");
-  const listItemHeight: number = 24;
-  const [localSelectedIndex, setLocalSelectedIndex] = useState<number>(selectedIndex !== null ? selectedIndex : -1);
+  const listItemHeight = 24;
+  const [localSelectedIndex, setLocalSelectedIndex] = useState<number>(selectedIndex);
 
   useEffect(() => {
-    inputRef.current?.focus(); // Focus on mount
+    inputRef.current?.focus();
   }, []);
 
-  // Filter the options based on filter value
+  useEffect(() => {
+    setLocalSelectedIndex(selectedIndex);
+  }, [selectedIndex]);
+
   const { filteredOptions, fullOptions } = getFullOptions(options, filterValue, onCreate);
 
-  // Use our virtual scroll hook
   const { virtualItems, containerProps, innerProps, scrollToIndex } = useVirtualListScroll({
     items: fullOptions,
     itemHeight: listItemHeight,
@@ -38,20 +42,12 @@ export const List: React.FC<ListProps> = ({
   });
 
   useEffect(() => {
-    if (selectedIndex !== null && selectedIndex !== localSelectedIndex) {
-      setLocalSelectedIndex(selectedIndex);
+    if (Array.isArray(activeIndex) && activeIndex.length > 0) {
+      const firstActive = filteredOptions.findIndex((o) => o.value === activeIndex[0]);
+      if (firstActive !== -1) scrollToIndex(firstActive);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedIndex]);
+  }, [filteredOptions, activeIndex, scrollToIndex]);
 
-  useEffect(() => {
-    if (localSelectedIndex >= 0 && localSelectedIndex < filteredOptions.length) {
-      scrollToIndex(localSelectedIndex);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [localSelectedIndex, filteredOptions]);
-
-  // Handle class for list
   const listClass = {
     wrapper: `${style["rst-list"]}`,
     input: `${style["rst-list-input"]}`,
@@ -63,7 +59,7 @@ export const List: React.FC<ListProps> = ({
   };
 
   return (
-    <div id={id} ref={ref as React.Ref<HTMLDivElement>} className={listClass.wrapper} data-component="list" style={{ width }}>
+    <div id={id} ref={ref as React.Ref<HTMLDivElement>} className={listClass.wrapper} data-component="list" style={{ width, positionAnchor: anchorName }}>
       <div className={listClass.input}>
         <Input
           value={filterValue}
@@ -91,6 +87,7 @@ export const List: React.FC<ListProps> = ({
         tabIndex={0}
         role="listbox"
         aria-label="List"
+        aria-multiselectable={multiple}
         onKeyDown={(e) =>
           handleKeyNavigation({
             e,
@@ -121,7 +118,7 @@ export const List: React.FC<ListProps> = ({
                   id={item.value}
                   aria-selected={localSelectedIndex === index}
                   tabIndex={-1}
-                  className={`${listClass.listItem} ${localSelectedIndex === index ? "selected-item" : ""}`}
+                  className={`${listClass.listItem} ${isActive ? "selected-item" : ""}`}
                   aria-label={displayValue}
                   style={{
                     height: `${listItemHeight}px`,

@@ -1,6 +1,18 @@
 .rst-icon {
   fill: inherit;
 
+  &.rst-icon-state-success {
+    fill: var(--rst-solid-success);
+  }
+
+  &.rst-icon-state-danger {
+    fill: var(--rst-solid-danger);
+  }
+
+  &.rst-icon-state-warning {
+    fill: var(--rst-solid-warning);
+  }
+
   &[aria-disabled="true"] {
     fill: var(--rst-text-disabled);
     cursor: not-allowed;

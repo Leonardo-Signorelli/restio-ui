@@ -1,7 +1,7 @@
 /* Button.module.css */
 
 /* Base button styles */
-.button {
+.rst-button {
   display: inline-flex;
   gap: var(--rst-space-small);
   align-items: center;
@@ -15,31 +15,32 @@
 }
 
 /* SIZING DIMENSION */
-.button--small {
+.rst-button-small {
   padding: var(--rst-space-xsmall) var(--rst-space-small);
   font-size: var(--rst-font-size-xs);
-  height: var(--size-small);
+  height: var(--rst-size-small);
 }
 
-.button--medium {
+.rst-button-medium {
   padding: var(--rst-space-small) var(--rst-space-medium);
   font-size: var(--rst-font-size-sm);
-  height: var(--size-medium);
+  height: var(--rst-size-medium);
 }
 
-.button--large {
+.rst-button-large {
   padding: var(--rst-space-medium) var(--rst-space-large);
   font-size: var(--rst-font-size-sm);
-  height: var(--size-large);
+  height: var(--rst-size-large);
 }
 
 /* VARIANT STYLE */
-.button--base,
-.button--invisible,
-.button--link {
+.rst-button-base,
+.rst-button-invisible,
+.rst-button-link {
   background-color: transparent;
   color: var(--rst-text-secondary);
   border: 1px solid transparent;
+
   &:hover {
     background-color: var(--rst-bgColor-default-hover);
   }
@@ -49,12 +50,12 @@
   }
 }
 
-.button--base {
+.rst-button-base {
   border: 1px solid var(--rst-border-default);
   background-color: var(--rst-bgColor-default);
 }
 
-.button--primary {
+.rst-button-primary {
   background-color: var(--rst-bgColor-primary);
   color: var(--rst-text-on-primary);
   border: 1px solid var(--rst-borderColor-primary);
@@ -68,10 +69,11 @@
   }
 }
 
-.button--danger {
+.rst-button-danger {
   border: 1px solid var(--rst-border-default);
   background-color: var(--rst-bgColor-default);
   color: var(--rst-text-danger);
+
   &:hover {
     background-color: var(--rst-bgColor-danger-hover);
     color: var(--rst-text-on-danger);
@@ -82,38 +84,39 @@
   }
 }
 
-.button--link {
+.rst-button-link {
   color: var(--rst-interactive-default);
   text-decoration: underline;
 }
 
 /* Disabled & Loading states */
-.button--disabled {
+.rst-button-disabled {
   background-color: var(--rst-bgColor-default-disabled);
   color: var(--rst-text-disabled);
   border: 1px solid var(--rst-border-default);
   cursor: not-allowed;
   opacity: 0.6;
+
   &:hover,
   &:active {
     background-color: var(--rst-bgColor-default-disabled);
   }
 }
 
-.button--loading {
+.rst-button-loading {
   cursor: not-allowed;
   opacity: 0.6;
 }
 
-.button__leading-visual,
-.button__trailing-visual {
+.rst-button-leading-visual,
+.rst-button-trailing-visual {
   margin: 0 8px;
 }
 
-.button--center {
+.rst-button-center {
   justify-content: center;
 }
 
-.button--start {
+.rst-button-start {
   justify-content: flex-start;
 }
